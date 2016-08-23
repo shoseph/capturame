@@ -1,0 +1,133 @@
+<?php use User\Auth\CapturaAuth; ?>
+<?php $this->headScript()->prependFile('/js/plugins/lightbox/lightbox.batalha.js');  ?>
+
+<?php if(CapturaAuth::getUser() && CapturaAuth::getUser()->tipo == 'root'): ?>
+<div class='parteConteudo'>
+    <bloquenote class="menu">
+        <h2 class='titulo'>Menu Batalhas</h2>
+        <h2 class='subtitulo'>Ações para as batalhas</h2>
+    </bloquenote>
+    <article>
+        <ul class="ladoalado">
+            <li><a class="vermelhoClaroHover" href="/cadastrar-batalha">Cadastrar Batalha</a></li>
+        </ul>
+    </article>
+</div>
+<?php endif; ?>
+
+
+ 
+<?php $this->tituloHelper()->setTitulo('Batalhas'); ?>
+
+<?php if($this->batalhas){ ?>
+    <?php foreach($this->batalhas as $indice =>  $batalha): ?>
+    <div class="parteConteudo">
+        <bloquenote class="batalha">
+            <h2 class="titulo"><?php if($batalha->quantitadeTotalDeImagens > 0) { ?> <a href="/visualizar-batalha/<?php echo $batalha->id_batalha ?>/1"><?php echo $batalha->titulo; ?></a> <?php } else { ?> <?php echo $batalha->titulo; ?>  <?php } ?></h2>
+            <h2 class="subtitulo"><?php if($batalha->quantitadeTotalDeImagens > 0) { ?> Clique no título para visualizar a batalha <?php } else { ?> Não existe imagens batalhando... <?php } ?> </h2>
+        </bloquenote>
+        <article>
+           <h3 class="paragrafoTitulo"><?php if($batalha->quantitadeTotalDeImagens > 0) { ?> <a href="/visualizar-batalha/<?php echo $batalha->id_batalha ?>/1"><?php echo $batalha->titulo; ?></a> <?php } else { ?> <?php echo $batalha->titulo; ?>  <?php } ?></h3>
+           <div class="conteudoBatalha">
+               <?php if(array_key_exists(0, $batalha->previewImagens)){ ?>
+                   <span class="conteudoBatalhaImagemPrincipal">
+                       <a href="<?php echo $batalha->previewImagens[0]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" class="capturada_1">
+                           <?php if($batalha->previewImagens[0]->capturada->descricao): ?>
+                               <span class='description'><?php echo $batalha->previewImagens[0]->capturada->descricao; ?></span>
+                           <?php endif; ?>
+                           <span class='exif'>
+                               <input type="hidden" class="iso" value="<?php echo $batalha->previewImagens[0]->capturada->getExif()->getIso(); ?>">
+                               <input type="hidden" class="exposicao" value="<?php echo $batalha->previewImagens[0]->capturada->getExif()->getExposicao(); ?>">
+                               <input type="hidden" class="distanciafocal" value="<?php echo $batalha->previewImagens[0]->capturada->getExif()->getDistanciafocal(); ?>">
+                               <input type="hidden" class="abertura" value="<?php echo $batalha->previewImagens[0]->capturada->getExif()->getAbertura(); ?>">
+                               <input type="hidden" class="flash" value="<?php echo $batalha->previewImagens[0]->capturada->getExif()->getFlash(); ?>">
+                           </span>
+                           <input type="hidden" class="identitem" value="<?php echo $batalha->previewImagens[0]->id_batalha_capturada; ?>">
+                           <input type="hidden" class="pegou" value="<?php echo $batalha->previewImagens[0]->pegou . '_' . $batalha->previewImagens[0]->naoPegou; ?>">
+                           <input type="hidden" class="title" value="<?php echo $batalha->previewImagens[0]->capturada->nome; ?>">
+                           <span class='view'><?php echo $batalha->previewImagens[0]->capturada->getImagem(); ?></span>
+                           <input type="hidden" class="data" value="<?php echo $batalha->previewImagens[0]->id_usuario. '_' . $batalha->previewImagens[0]->capturada->id_capturada; ?>">
+                           <img src="<?php echo $batalha->previewImagens[0]->capturada->getImagem(); ?>">
+                           <?php foreach($batalha->previewImagens[0]->capturada->tags as $tag): ?>
+                               <input type="hidden" class="tag_<?php echo $batalha->previewImagens[0]->capturada->id_capturada . '_' . $tag->id_tag; ?>" value="<?php echo $batalha->previewImagens[0]->capturada->id_capturada . '_' . $tag->id_tag . '_' . $tag->nome . '_'  . $batalha->previewImagens[0]->capturada->user; ?>" >
+                           <?php endforeach; ?>
+                        </a>
+                   </span>
+               <?php } else { ?>
+                   <span class="conteudoBatalhaImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+               <span class="conteudoBatalhaInfo">
+               <?php if(array_key_exists(1, $batalha->previewImagens)){ ?>
+                   <a href="<?php echo $batalha->previewImagens[1]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" class="capturada_2">
+                       <?php if($batalha->previewImagens[1]->capturada->descricao): ?>
+                           <span class='description'><?php echo $batalha->previewImagens[1]->capturada->descricao; ?></span>
+                       <?php endif; ?>
+                       <span class='exif'>
+                           <input type="hidden" class="iso" value="<?php echo $batalha->previewImagens[1]->capturada->getExif()->getIso(); ?>">
+                           <input type="hidden" class="exposicao" value="<?php echo $batalha->previewImagens[1]->capturada->getExif()->getExposicao(); ?>">
+                           <input type="hidden" class="distanciafocal" value="<?php echo $batalha->previewImagens[1]->capturada->getExif()->getDistanciafocal(); ?>">
+                           <input type="hidden" class="abertura" value="<?php echo $batalha->previewImagens[1]->capturada->getExif()->getAbertura(); ?>">
+                           <input type="hidden" class="flash" value="<?php echo $batalha->previewImagens[1]->capturada->getExif()->getFlash(); ?>">
+                       </span>
+                       <input type="hidden" class="identitem" value="<?php echo $batalha->previewImagens[1]->id_batalha_capturada; ?>">
+                       <input type="hidden" class="pegou" value="<?php echo $batalha->previewImagens[1]->pegou . '_' . $batalha->previewImagens[1]->naoPegou; ?>">
+                       <input type="hidden" class="title" value="<?php echo $batalha->previewImagens[1]->capturada->nome; ?>">
+                       <span class='view'><?php echo $batalha->previewImagens[1]->capturada->getImagem(); ?></span>
+                       <input type="hidden" class="data" value="<?php echo $batalha->previewImagens[1]->id_usuario. '_' . $batalha->previewImagens[1]->capturada->id_capturada; ?>">
+                       <img src="<?php echo $batalha->previewImagens[1]->capturada->getThumb(); ?>">
+                       <?php foreach($batalha->previewImagens[1]->capturada->tags as $tag): ?>
+                           <input type="hidden" class="tag_<?php echo $batalha->previewImagens[1]->capturada->id_capturada . '_' . $tag->id_tag; ?>" value="<?php echo $batalha->previewImagens[1]->capturada->id_capturada . '_' . $tag->id_tag . '_' . $tag->nome . '_'  . $batalha->previewImagens[1]->capturada->user; ?>" >
+                       <?php endforeach; ?>
+                    </a>
+               <?php } else { ?>
+                   <span class="conteudoBatalhaImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+               <?php if(array_key_exists(2, $batalha->previewImagens)){ ?>
+                   <a href="<?php echo $batalha->previewImagens[2]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" class="capturada_3">
+                       <?php if($batalha->previewImagens[2]->capturada->descricao): ?>
+                           <span class='description'><?php echo $batalha->previewImagens[2]->capturada->descricao; ?></span>
+                       <?php endif; ?>
+                       <span class='exif'>
+                           <input type="hidden" class="iso" value="<?php echo $batalha->previewImagens[2]->capturada->getExif()->getIso(); ?>">
+                           <input type="hidden" class="exposicao" value="<?php echo $batalha->previewImagens[2]->capturada->getExif()->getExposicao(); ?>">
+                           <input type="hidden" class="distanciafocal" value="<?php echo $batalha->previewImagens[2]->capturada->getExif()->getDistanciafocal(); ?>">
+                           <input type="hidden" class="abertura" value="<?php echo $batalha->previewImagens[2]->capturada->getExif()->getAbertura(); ?>">
+                           <input type="hidden" class="flash" value="<?php echo $batalha->previewImagens[2]->capturada->getExif()->getFlash(); ?>">
+                       </span>
+                       <input type="hidden" class="identitem" value="<?php echo $batalha->previewImagens[2]->id_batalha_capturada; ?>">
+                       <input type="hidden" class="pegou" value="<?php echo $batalha->previewImagens[2]->pegou . '_' . $batalha->previewImagens[2]->naoPegou; ?>">
+                       <input type="hidden" class="title" value="<?php echo $batalha->previewImagens[2]->capturada->nome; ?>">
+                       <span class='view'><?php echo $batalha->previewImagens[2]->capturada->getImagem(); ?></span>
+                       <input type="hidden" class="data" value="<?php echo $batalha->previewImagens[2]->id_usuario. '_' . $batalha->previewImagens[2]->capturada->id_capturada; ?>">
+                       <img src="<?php echo $batalha->previewImagens[2]->capturada->getThumb(); ?>">
+                       <?php foreach($batalha->previewImagens[2]->capturada->tags as $tag): ?>
+                           <input type="hidden" class="tag_<?php echo $batalha->previewImagens[2]->capturada->id_capturada . '_' . $tag->id_tag; ?>" value="<?php echo $batalha->previewImagens[2]->capturada->id_capturada . '_' . $tag->id_tag . '_' . $tag->nome. '_'  . $batalha->previewImagens[2]->capturada->user; ; ?>" >
+                       <?php endforeach; ?>
+                    </a>
+               <?php } else { ?>
+                   <span class="conteudoBatalhaImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+                   <p><?php echo $batalha->descricao; ?></p>
+                   <ul>
+                       <li><span class="iconCapturadas">&nbsp;</span><?php echo $batalha->quantitadeTotalDeImagens; ?> Capturadas</li>
+                       <li><span class="iconData">&nbsp;</span><?php echo $batalha->getDataFimBr(); ?></li>
+                       <?php if(CapturaAuth::getUser()): ?>
+                       <li><span class="iconParticipacao">&nbsp;</span><?php if(is_bool($batalha->participando)) : if($batalha->participando){ ?>  <span class="verdeClaro"> Participando</span>  <?php }else{ ?>  <span class="vermelhoClaro"> Não Participando</span> <?php } endif;?></li>
+                       <?php endif; ?>
+                   </ul>
+               </span>
+           </div>
+        </article>  
+    </div>
+    <?php endforeach; ?>  
+<?php } else { ?>
+    Aguardando a existência de uma nova batalha
+<?php } ?>
+
+

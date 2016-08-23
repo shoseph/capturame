@@ -1,0 +1,19 @@
+<?php $this->tituloHelper()->setTitulo('Capturadores'); ?>
+<div class='parteConteudo'>
+    <bloquenote class="capturadores">
+        <h2 class='titulo'>Capturadores</h2>
+        <h2 class='subtitulo'>Lista dos melhores do Captura.Me</h2>
+    </bloquenote>
+    <article>
+        <ul id="listaUsuarios">
+            <?php foreach($this->usuarios as $usuario): if($usuario->nome != 'root'): ?>
+                <li class="hover">
+                    <p title="Nome do Capturador"><a href="/visualizar-capturadas/<?php echo $usuario->id_usuario; ?>/1"><?php echo \Captura::rulleSplitName($usuario->nome); ?></a></p>
+                    <p title="Total de imagens"><span class="iconTotalImagens">&nbsp;</span><span><?php echo $usuario->totalImagens; ?></span></p>
+                    <p title="Reputação no Captura.Me"><span class="iconReputacao">&nbsp;</span><span><?php echo $usuario->reputacao->nome_reputacao; ?> (<?php echo $usuario->pontoPermanente->soma; ?>)</span></p>
+                    <p title="Pontuação Mensal"><span class="iconReputacaoMensal">&nbsp;</span><span><?php echo $usuario->pontoMensal->soma; ?></span></p>
+                </li>
+            <?php endif; endforeach; ?>
+        </ul>
+    </article>  
+</div>

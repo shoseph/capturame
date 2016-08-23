@@ -1,0 +1,63 @@
+<?php use User\Auth\CapturaAuth; ?>
+
+<?php $this->view->headScript()->prependFile('/js/application/index/login.js');  ?> 
+<?php if($this->usuarioLogado) { ?>
+    <?php $user = CapturaAuth::getInstance()->getUser();?>
+    <h2>Bem vindo!</h2>
+    <span class="linhaMenuLateral"></span>
+    <h4><?php echo \Captura::rulleSplitName($user->nome); ?></h4>
+    <span id="infoUser">
+        <span id="imgUser">&nbsp;
+<!--             <img src="/images/fotos/img_media.jpg" width="40" height="40"/> -->
+        </span>
+        <span id="dataUser">
+            <h3>PP <span><?php echo $user->pontoPermanente->soma ? $user->pontoPermanente->soma : 0; ?></span></h3>
+            <h3>PM <span><?php echo $user->pontoMensal->soma ? $user->pontoMensal->soma : 0; ?></span></h3>
+            <h3>CPT <span><?php echo $this->quantidadeCapturadas; ?></span></h3>
+        </span>
+    </span>
+    <span class="linhaMenuLateral"></span>
+    <ul class="menuAcessoUsuario">
+        <?php if(!$user->id_facebook) { 
+                  echo $this->view->facebookVincularUsuarioHelper(); 
+              } else {
+//                   $this->view->headScript()->appendFile('http://connect.facebook.net/en_US/all.js')->appendFile('/js/application/index/convidar-amigos.js');
+        ?>
+              <li><span class="linhaMenuLateral"></span></li>
+<!--               <li class="itensCentralizados hover"><a id="convidarAmigos">Convidar Amigos</a></li> -->
+<!--               <li><span class="linhaMenuLateral"></span></li> -->
+        <?php } ?>
+        <li class="itensCentralizados hover"><a id="modificarSenha" href="/modificar-senha">Modificar Senha</a></li>
+        <li><span class="linhaMenuLateral"></span></li>
+        <li class="itensCentralizados hover"><a id="editarPerfil" href="/editar-usuario">Editar Perfil</a></li>
+        <li><span class="linhaMenuLateral"></span></li>
+        <li class="itensCentralizados hover"><a href="/visualizar-capturadas/<?php echo CapturaAuth::getInstance()->getUser()->id_usuario; ?>/1">Minhas Imagens</a></li>
+        <li><span class="linhaMenuLateral"></span></li>
+        <li class="itensCentralizados hover"><a title="Deslogar do Captura.Me" href="/logout">Sair</a></li>
+        <li><span class="linhaMenuLateral"></span></li>
+    </ul>
+    
+    
+<?php } else {?>
+    
+        <?php $form = $this->form; $form->setAttribute('action', '/login'); $form->prepare(); ?>
+        <?php echo $this->view->form()->openTag($form); ?>
+        <ul class="menuAcessoUsuario">
+            <li class="cabecalho hover"><a id="entrar">Entrar</a></li>
+            <li><span class="separadorPequeno">&nbsp;</span></li>
+            <li class="cabecalho"><a id="registrarUsuario" href="/registrar">Registrar</a></li>
+            <li><span id="separadorMenuAcessoUsuario" class="filtroTag"> </span></li>
+            <li class="background">&nbsp;</li>
+            <li class="itens"><span><?php echo $this->view->formLabel($form->get('login')); ?></span> <?php echo $this->view->formElement($form->get('login')); ?></li>
+            <li class="itens"><span><?php echo $this->view->formLabel($form->get('senha')); ?></span> <?php echo $this->view->formElement($form->get('senha')); ?></li>
+            <li> <?php echo $this->view->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <span class="linhaMenuLateral"></span>
+        <?php echo $this->view->facebookLoginHelper(); ?>
+        <ul class="menuAcessoUsuario">
+            <li class="itensCentralizados hover"><a id="esqueceuSenha" href="/esqueceu-senha" >Esqueceu sua senha?</a>
+        </ul>
+        <?php echo $this->view->form()->closeTag(); ?>
+        
+    <span class="linhaMenuLateral"></span>
+<?php }?>

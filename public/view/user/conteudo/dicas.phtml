@@ -1,0 +1,18 @@
+<?php use User\Controller\Plugin\UserAuthentication; use \User\Auth\CapturaAuth; ?>
+<?php $this->tituloHelper()->setTitulo('Dicas'); ?>
+<?php if($this->dicas): foreach($this->dicas as $dica): ?>
+<div class='parteConteudo'>
+    <bloquenote class="dica">
+        <h2 class='titulo'><?php echo $dica->titulo; ?></h2>
+        <h2 class='subtitulo'>
+            <?php if(CapturaAuth::getInstance()->getUser() && CapturaAuth::getInstance()->getUser()->id_usuario == $dica->id_usuario): ?><a title="Deletar esta dica" href="/deletar-conteudo/<?php echo $dica->id_usuario?>/<?php echo $dica->id_conteudo?>" class="deletarConteudo">deletar</a><?php endif; ?>
+        </h2>
+    </bloquenote>
+    <article>
+    <div class="ckeditorconteudo"><?php echo $dica->conteudo; ?></div>
+    </article>
+</div>
+
+<?php endforeach; endif;?>
+
+

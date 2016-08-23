@@ -1,0 +1,30 @@
+<?php //$this->view->headScript()->prependFile('/js/application/index/destaque.js');  ?> 
+
+
+<ul class="destaqueCapturadas">
+    <?php foreach($this->capturadas as $indice => $capturada): ?>
+        <li>
+            <a class="capturada_<?php echo $indice+1 ?>" href="<?php echo $this->capturadas[$indice]->getImagem(); ?>" rel="destaque">
+               <?php if($this->capturadas[$indice]->descricao): ?>
+                   <span class='description'><?php echo $this->capturadas[$indice]->descricao; ?></span>
+               <?php endif; ?>
+               <span class='view'><?php echo $this->capturadas[$indice]->getImagem(); ?></span>
+               <span class='exif'>
+                   <input type="hidden" class="iso" value="<?php echo $this->capturadas[$indice]->getExif()->getIso(); ?>">
+                   <input type="hidden" class="exposicao" value="<?php echo $this->capturadas[$indice]->getExif()->getExposicao(); ?>">
+                   <input type="hidden" class="distanciafocal" value="<?php echo $this->capturadas[$indice]->getExif()->getDistanciafocal(); ?>">
+                   <input type="hidden" class="abertura" value="<?php echo $this->capturadas[$indice]->getExif()->getAbertura(); ?>">
+                   <input type="hidden" class="flash" value="<?php echo $this->capturadas[$indice]->getExif()->getFlash(); ?>">
+               </span>
+               <input type="hidden" class="identitem" value="<?php echo $this->capturadas[$indice]->id_capturada . '_' . $this->capturadas[$indice]->user; ?>">
+               <input type="hidden" class="data" value="<?php echo $this->capturadas[$indice]->user . '_' . $this->capturadas[$indice]->id_capturada; ?>">
+               <input type="hidden" class="pegou" value="<?php echo $this->capturadas[$indice]->pegou . '_' . $this->capturadas[$indice]->naoPegou; ?>">
+               <input type="hidden" class="title" value="<?php echo $this->capturadas[$indice]->nome; ?>">
+               <img src="<?php echo $this->capturadas[$indice]->getThumb(); ?>" alt="<?php echo $this->capturadas[$indice]->nome; ?>">
+               <?php foreach($this->capturadas[$indice]->tags as $tag): ?>
+                   <input type="hidden" class="tag_<?php echo $this->capturadas[$indice]->id_capturada . '_' . $tag->id_tag; ?>" value="<?php echo $this->capturadas[$indice]->id_capturada . '_' . $tag->id_tag . '_' . $tag->nome . '_' . $this->capturadas[$indice]->user; ?>" >
+               <?php endforeach; ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

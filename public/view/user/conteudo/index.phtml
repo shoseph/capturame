@@ -1,0 +1,74 @@
+<?php use User\Controller\Plugin\UserAuthentication; use \User\Auth\CapturaAuth; ?>
+<h2 class="linha linhaTitulo pointer"><span class="branco">Novidades</span></h2>
+<div class="paragrafos">
+
+<?php if(CapturaAuth::getInstance()->getUser()):?>
+    <div class="paragrafoCentral">
+        <div class="paragrafoTitulo verdeClaro"><span class="iconInfo">&nbsp;</span>Menu Novidades</div>
+        <div class="paragrafoDados">
+            <?php if(UserAuthentication::getInstance()->hasPermission('adicionar-novidade')): ?>
+            <div class="cinza">
+                <span class="iconFogo">&nbsp;</span>Novidade
+                <span class="linkParagrafoDados">	
+                    <span class="iconMais">&nbsp;</span><a class="laranjaClaroHover" href="/adicionar-novidade">Nova</a>
+               </span>
+            </div>   
+            <?php endif; ?>
+            <?php if(UserAuthentication::getInstance()->hasPermission('adicionar-dica')): ?>
+            <div class="cinza">
+                <span class="iconLapis">&nbsp;</span>Dicas
+                <span class="linkParagrafoDados">	
+                    <span class="iconMais">&nbsp;</span><a class="laranjaClaroHover" href="/adicionar-dica">Nova</a>
+               </span>
+            </div>   
+            <?php endif; ?>
+            <?php if(UserAuthentication::getInstance()->hasPermission('adicionar-artigo')): ?>
+            <div class="cinza">
+                <span class="iconEstrela">&nbsp;</span>Artigos
+                <span class="linkParagrafoDados">	
+                    <span class="iconMais">&nbsp;</span><a class="laranjaClaroHover" href="/adicionar-artigo">Novo</a>
+               </span>
+            </div>   
+            <?php endif; ?>
+        </div>
+    </div>
+    <br class="clear" />
+<?php endif; ?>
+    <div class="paragrafoTitulo"><span class="iconInfo">&nbsp;</span> 
+        <span class="cinzaClaro">Novidades&nbsp;&nbsp;</span><span class="vermelhoClaroBackground">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="cinzaClaro">Artigos&nbsp;&nbsp;</span><span class="azulClaroBackground">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="cinzaClaro">Dicas&nbsp;&nbsp;</span><span class="verdeClaroBackground">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+    <?php if($this->novidades): foreach($this->novidades as $novidade): ?>
+    <div class="blocoConteudo vermelhoClaroBorder">
+        <h1 class="tituloConteudo branco vermelhoClaroBackground"><?php echo $novidade->titulo; ?></h1>
+        <?php if(CapturaAuth::getInstance()->getUser() && CapturaAuth::getInstance()->getUser()->id_usuario == $novidade->id_usuario): ?><a title="Deletar esta novidade" href="/deletar-conteudo/<?php echo $novidade->id_usuario?>/<?php echo $novidade->id_conteudo?>" class="deletarConteudo branco vermelhoClaroBackground">x</a><?php endif; ?>
+        <hr class="linhaConteudo vermelhoClaroBorder vermelhoClaroBackground" />
+        <br class="clear"/>
+        <span class="textoConteudo overflowMouseUp cke_contents_ltr"><?php echo $novidade->conteudo; ?></span>
+    </div>
+    <?php endforeach; endif;?>
+    
+    <?php if($this->dicas): foreach($this->dicas as $dica): ?>
+    <div class="blocoConteudo verdeClaroBorder">
+        <h1 class="tituloConteudo branco verdeClaroBackground"><?php echo $dica->titulo; ?></h1>
+        <?php if(CapturaAuth::getInstance()->getUser() && CapturaAuth::getInstance()->getUser()->id_usuario == $dica->id_usuario): ?><a title="Deletar esta dica" href="/deletar-conteudo/<?php echo $dica->id_usuario?>/<?php echo $dica->id_conteudo?>" class="deletarConteudo branco verdeClaroBackground">x</a><?php endif; ?>
+        <hr class="linhaConteudo verdeClaroBorder verdeClaroBackground" />
+        <br class="clear"/>
+        <span class="textoConteudo overflowMouseUp cke_contents_ltr"><?php echo $dica->conteudo; ?></span>
+    </div>
+    <?php endforeach; endif;?>
+    
+    <?php if($this->artigos): foreach($this->artigos as $artigo): ?>
+    <div class="blocoConteudo azulClaroBorder">
+        <h1 class="tituloConteudo branco azulClaroBackground"><?php echo $artigo->titulo; ?></h1>
+        <?php if(CapturaAuth::getInstance()->getUser() && CapturaAuth::getInstance()->getUser()->id_usuario == $artigo->id_usuario): ?><a title="Deletar esta artigo" href="/deletar-conteudo/<?php echo $artigo->id_usuario?>/<?php echo $artigo->id_conteudo?>" class="deletarConteudo branco azulClaroBackground">x</a><?php endif; ?>
+        <hr class="linhaConteudo azulClaroBorder azulClaroBackground" />
+        <br class="clear"/>
+        <span class="textoConteudo overflowMouseUp cke_contents_ltr"><?php echo $artigo->conteudo; ?></span>
+    </div>
+    <?php endforeach; endif;?>
+       
+</div>
+<br class="clear" />

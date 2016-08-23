@@ -1,0 +1,59 @@
+<?php use User\Auth\CapturaAuth; ?>
+
+<h2 class="linha linhaTitulo"><span class="branco">Capturada</span></h2>
+<div class="paragrafo azul negrito">
+    <span class="iconCamera">&nbsp;</span>
+    <span class="tamanhoTextoPadrao"><?php echo $this->capturada->capturada->nome ?></span>
+    <span class="tamanhoTextoPegarNaoPegar" title="Uma foto que foi bem capturada"><a class="verdeClaro" id="pegou">Pegou</a></span>
+    <h2 class="iconCurtir">&nbsp;</h2>
+    <h2 id="quantidadePeguei" class="iconQuantidade verdeClaro"><?php echo $this->capturada->capturada->pegou ? $this->capturada->capturada->pegou : 0; ?></h2>
+</div>
+<div class="paragrafo verdeClaro negrito">
+    <span class="iconBoneco">&nbsp;</span>
+    <span class="tamanhoTextoPadrao"><a class="verdeClaro" href="/visualizar-capturadas/<?php echo $this->user->id_usuario; ?>/1"><?php echo ucfirst($this->user->nome); ?></a></span>
+    <span class="tamanhoTextoPegarNaoPegar" title="Uma foto que não foi bem capturada"><a class="vermelho" id="naoPegou">Não Pegou</a></span>
+    <h2 class="iconNaoCurtir">&nbsp;</h2>
+    <h2 id="quantidadeNaoPeguei" class="iconQuantidade vermelho"><?php echo $this->capturada->capturada->naoPegou ? $this->capturada->capturada->naoPegou : 0; ?></h2>
+</div>
+
+<h4 class="linha">&nbsp;</h4>
+<div class="paragrafo azul negrito">
+<?php if(CapturaAuth::getUser() && $this->user->id_usuario == CapturaAuth::getUser()->id_usuario){ ?>
+    <input type="hidden" id="user" value="<?php echo CapturaAuth::getUser()->id_usuario; ?>" />
+    <input type="hidden" id="capturada" value="<?php echo $this->capturada->capturada->id_capturada; ?>" />
+    <span class="iconEstrela">&nbsp;</span><span><a id="editarCapturada" class="azul pointer">Editar</a></span>
+    <?php echo $this->adicionarTagHelper($this->capturada->capturada->getId(),$this->user->id_usuario); ?>
+<?php } ?>
+    <span class="iconDinheiro">&nbsp;</span><span><a href="#" class="laranja">Doar 1 Dolar</a></span>
+    <span class="iconDownload">&nbsp;</span><span><a id="download" class="amarelo pointer">Download</a></span>
+</div>
+
+<?php echo $this->tagsHelper($this->capturada->capturada->id_capturada, $this->tags, $this->user->id_usuario); ?>
+
+<div align="center" class="foto">
+    
+    <?php if($this->voltar): ?> <a id="setaEsq" class="divisaoEsquerda" href="/visualizar-tag/<?php echo $this->voltar; ?>"></a> <?php endif; ?>
+    <?php if($this->avancar): ?> <a id="setaDir" class="divisaoDireita" href="/visualizar-tag/<?php echo $this->avancar; ?>"></a> <?php endif; ?>
+    <img src="<?php echo $this->capturada->capturada->getImagem(); ?>" />
+    <input type="hidden" value="<?php echo $this->capturada->capturada->getPath(); ?>" id="caminho" />
+    <input type="hidden" value="<?php echo $this->capturada->capturada->id_capturada; ?>" id="capturada" />
+    <input type="hidden" value="<?php echo $this->capturada->capturada->user; ?>" id="usuario" />
+</div>
+    <?php if($this->capturada->capturada->getDescricao()): ?>
+    <div id="descricaoFoto">
+        <span><?php echo $this->capturada->capturada->getDescricao(); ?></span>
+    </div>
+    <?php endif; ?>
+    <div id="dialog" class="escondido" title="Pegar Imagem">Você já pegou essa imagem!</div>
+<br class="clear"/>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=487250587978311";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>    
+    
+<div class="fb-comments" data-href="<?php echo $this->url ?>" data-width="980" data-num-posts="4"></div> 

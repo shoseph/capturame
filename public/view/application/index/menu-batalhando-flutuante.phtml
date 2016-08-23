@@ -1,0 +1,15 @@
+<?php
+    use User\Auth\CapturaAuth;
+    $this->view->headScript()->prependFile('/js/plugins/captura/menuBatalhandoFlutuante.js'); 
+?>
+        
+<ul>
+    <li class="cabecalho">Favoritos</li>
+    <?php if($user = CapturaAuth::getInstance()->getUser()){?>
+        <?php if(!$user->getBatalhando()){?>
+            <li><span class="iconBatalha">&nbsp;</span><a href="/batalhe" class="pointer" >Batalhar</a></li>
+        <?php } else { ?>
+            <li><span class="iconBatalha">&nbsp;</span><a href="/nao-batalhe" class="pointer" >Desligar modo batalha</a></li>
+        <?php }?>
+    <?php }?>
+</ul>

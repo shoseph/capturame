@@ -1,0 +1,36 @@
+<?php $this->view->headScript()->prependFile('/js/application/index/paginador.js');  ?>
+<div id="divPaginadorCaptura">
+    <span class="linhaDivisoriaPaginador">&nbsp;</span>
+       <ul id="paginadorCaptura">
+        <li>
+        <input type="hidden" id="linkPaginador" value="<?php echo $this->link; ?>">
+            <label for="paginaPaginador">Pagina</label> 
+            <select id="paginaPaginador">
+            <?php for($x = 1; $x <= $this->paginaFinal; $x++): ?>
+            <option <?php echo $this->paginaSelecionada == $x ? 'selected="selected"' : ''; ?> >
+                <?php echo $x; ?>
+            </option>
+            <?php endfor;?>
+            </select>
+        </li>
+        <?php if($this->anterior){ ?>
+            <li><a href="<?php echo "{$this->link}{$this->anterior}" ?>"> &#60; Anterior</a></li>
+        <?php } else { ?>
+            <li><label>&#60; Anterior</label></li>
+        <?php } ?>
+        <?php for($x = $this->paginaInicial; $x <= $this->paginaFinal; $x++): ?>
+            <li <?php echo $this->paginaSelecionada == $x ? 'class="selected"' : ''; ?> >
+                <a href="<?php echo "{$this->link}{$x}"; ?>"><?php echo $x; ?></a>
+            </li>
+        <?php endfor;?>
+        <?php if($this->proxima){ ?>
+            <li><a href="<?php echo "{$this->link}{$this->proxima}" ?>"> Próxima &#62;</a></li>
+        <?php } else { ?>
+            <li><label> Próxima &#62;</label></li>
+        <?php }?>
+        
+        <li><a href="<?php echo $this->link . $this->totalPaginas; ?>"><label class="pointer">Ultima </label><span class="verdeClaro top"><?php echo $this->totalPaginas; ?></span></a></li>
+    </ul> 
+    <span class="linhaDivisoriaPaginador">&nbsp;</span>
+</div>
+

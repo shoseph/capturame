@@ -1,0 +1,32 @@
+<?php
+    $form = $this->form;
+    $url = "/adicionar-tag/{$this->user->id_usuario}/{$this->capturada->id_capturada}";
+    $form->setAttribute('action', $url);
+    $form->setAttribute('enctype', 'multipart/form-data');
+    $form->prepare();
+?>
+<h2 class="linha linhaTitulo"><span class="branco">Adicionar</span><span class="branco"> Tag</span></h2>
+<?php echo $this->form()->openTag($form); ?>
+<div class="paragrafos">
+    <div class="paragrafoEsquerdo">
+        <div class="paragrafoTitulo verdeClaro"><span class="iconInfo">&nbsp;</span><?php echo $this->capturada->nome ?></div>
+        <div class="paragrafoDados">
+            <div class="cinza"><span class="iconBoneco">&nbsp;</span><?php echo ucfirst($this->user->nome); ?></div>
+            <div class="cinza"><span class="iconLapis">&nbsp;</span><?php echo $this->formElement($form->get('nome')); ?></div>
+        </div>
+        <div class="cinza">&nbsp;</div>
+        <div class="cinza">&nbsp;</div>
+        <div class="cinza">
+            <a id="editarCapturada" href="/visualizar-capturada/<?php echo $this->user->id_usuario; ?>/<?php echo $this->capturada->id_capturada; ?>">Voltar</a>
+            <?php echo $this->formSubmit($form->get('enviar')); ?>
+        </div>
+    </div>
+    <div class="paragrafoDireito">
+        <div class="paragrafoDados">
+            <span><img id="imgEditar" width="270px" src="<?php echo $this->capturada->getImagem(); ?>" /></span>
+        </div>
+    </div>
+    <div id="dialog" class="escondido" title="Adicionar Tag">Deseja adicionar a tag <span id='tag'></span>?</div>
+</div>
+<?php echo $this->form()->closeTag(); ?>
+<br class="clear" />

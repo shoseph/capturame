@@ -1,0 +1,16 @@
+#batalhando > header { background: none repeat scroll 0 0 #FF5050; }
+.backgroundVermelho { float: left; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -42px -109px transparent; cursor: pointer; height: 40px;  width: 40px; overflow: hidden;}
+#tituloPagina{ float: left; font-family: 'asf'; font-size: 24px; margin: 10px 0 0 6px ; color: #fff;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.capturadas { background-position: -574px -208px; }
+#batalhando > #corpo #esquerda > aside > #menuFlutuante { background: none no-repeat scroll 0 0 #FF5050;}
+#tituloPagina { color: #fff; }
+#batalhando > #corpo > #esquerda #conteudo > #blocoConteudo { margin: 0px 14px -14px 0 !important; }
+#corpo #esquerda #painel div#divisaoEsquerda{ border-right: 1px solid  #FF9999;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote  > .titulo { border-bottom: 1px solid #FF9999; border-image: none; color: #FF5050; }
+#corpo #esquerda #painel nav { border-bottom: 1px solid #FF9999; border-right: 1px solid #FF9999; }
+#corpo #esquerda #painel { border-image: none; border-left: 1px solid #FF9999; }
+#corpo #esquerda #painel nav #separadorListaCapturadas { border-image: none; border-right: 1px solid #FF9999; }
+#corpo #esquerda #conteudo #blocoConteudo #divPaginadorCaptura > .linhaDivisoriaPaginador { border-bottom: 1px solid #FF9999; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > .listaCapturadas > .linhaDivisoria { border-image: none; border-top: 1px solid #FF9999; }
+#corpo #esquerda > aside > #menuFlutuante > ul > li.cabecalho, #corpo #esquerda > aside > #menuFlutuante > ul > li.cabecalho:hover { color: #fff; font-weight: bold; }
+#corpo #esquerda > aside > #menuFlutuante { min-height: 20px;}

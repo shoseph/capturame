@@ -1,0 +1,49 @@
+<?php
+    use User\Auth\CapturaAuth;
+    $this->view->headScript()->prependFile('/js/application/index/menu-principal.js');
+?>
+<ul id="menuPrincipal">
+    <li><a id="home" href="/" title="Página Inicial">Captura.Me</a></li>
+    <li>
+        <a id="novosUsuarios" href="/capturadores" title="Nossos Capturadores">&nbsp;</a>
+        <?php if($this->usuarios && CapturaAuth::getInstance()->getUser()){ ?>
+            <span class="contadorMenuPrincipal"><?php echo $this->usuarios; ?></span>
+        <?php } else { ?>
+            <span class="contadorMenuPrincipalVazio"></span>
+        <?php } ?>
+    </li>
+    <li>
+        <a id="novasBatalhas" href="/batalhas" title="Nossas Batalhas">&nbsp;</a>
+        <?php if($this->batalhas && CapturaAuth::getInstance()->getUser()){ ?>
+            <span class="contadorMenuPrincipal"><?php echo $this->batalhas; ?></span>
+        <?php } else { ?>
+            <span class="contadorMenuPrincipalVazio"></span>
+        <?php } ?>
+        
+    </li>
+    <li>
+        <a id="novasFotos" href="/novas-capturadas/1" title="Lista de novas fotos">&nbsp;</a>
+        <?php if($this->enviadas && CapturaAuth::getInstance()->getUser()){ ?>
+            <span class="contadorMenuPrincipal"><?php echo $this->enviadas; ?></span>
+        <?php } else { ?>
+            <span class="contadorMenuPrincipalVazio"></span>
+        <?php } ?>
+    </li>
+    <li>
+        <a id="novidades" href="/" title="Novidades">&nbsp;</a>
+        <?php if($this->novidades && CapturaAuth::getInstance()->getUser()){ ?>
+            <span class="contadorMenuPrincipal"><?php echo $this->novidades; ?></span>
+        <?php } else { ?>
+            <span class="contadorMenuPrincipalVazio"></span>
+        <?php } ?>
+        
+    </li>
+    <li>
+        <a id="maisCurtidas" href="/mais-curtidas/1" title="As mais curtidas">&nbsp;</a>
+        <?php if($this->maisCurtidas && CapturaAuth::getInstance()->getUser()){ ?>
+            <span class="contadorMenuPrincipal"><?php echo $this->maisCurtidas; ?></span>
+        <?php } else { ?>
+            <span class="contadorMenuPrincipalVazio"></span>
+        <?php } ?>
+    </li>
+</ul> 

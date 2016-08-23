@@ -1,0 +1,28 @@
+{
+    "name": "zf-commons/zfc-user",
+    "description": "A generic user registration and authentication module for ZF2. Supports Zend\\Db and Doctrine2.",
+    "type": "library",
+    "keywords": [
+        "zf2"
+    ],
+    "homepage": "https://github.com/shoseph/CpUser",
+    "authors": [
+        {
+            "name": "José Rafael Mendes Barbosa",
+            "email": "joserafaelmb@gmail.com",
+            "homepage": "http://captura.me"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "CpUser": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}

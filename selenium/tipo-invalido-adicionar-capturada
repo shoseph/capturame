@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://zf.captura" />
+<title>adicionar-capturada</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">adicionar-capturada</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/capturada/index/adicionar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=nome</td>
+	<td>Amor na cerca</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=descricao</td>
+	<td>Foto da minha namorada em florianópolis</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=arquivo</td>
+	<td>/media/SAMSUNG/fotografia/2012/08/floripa/jpeg - amarelo/viagem/floripa-335.xxx</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

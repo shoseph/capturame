@@ -1,0 +1,57 @@
+<?php $this->tituloHelper()->setTitulo('Modo Batalha <a id="linkSairBatalha" href="/nao-batalhe" class="pointer" >(sair)</a>'); ?>
+<?php $this->headScript()->prependFile('/js/plugins/lightbox/lightbox.comum.js');  ?>
+<?php use User\Auth\CapturaAuth; ?>
+
+<div class='parteConteudo'>
+    <bloquenote class="capturadas">
+        <h2 class='titulo'>Capturadas</h2>
+        <h2 class='subtitulo'>Listagem de capturadas que ainda não batalharam</h2>
+    </bloquenote>
+    <article>
+        <h3 class="paragrafoTitulo"></h3>
+        <?php echo $this->paginadorHelper("/cadastrar-capturada-batalha/", $this->totalPaginas, $this->pagina); ?>
+        
+        <?php foreach ($this->batalhas as $batalha): ?>
+            <input type="hidden" class="batalha_<?php echo $batalha->id_batalha; ?>" val="<?php echo "{$batalha->id_batalha}_{$batalha->titulo}"; ?>">        
+        <?php endforeach;?>
+        
+        <?php //$this->view->headScript()->appendScript($script); ?>
+        
+        <?php if($this->capturadas):?>
+        <article class="listagemImagens">
+            <?php $tamanho = count($this->capturadas); for($i=0; $i< $tamanho; $i += 5): ?>
+            <ul class="listaCapturadas">
+                <?php for($indice = $i; $indice < $i+5; $indice++): ?>
+                    <?php if(array_key_exists($indice, $this->capturadas)){ ?>
+                    <li>
+                        <a href="<?php echo $this->capturadas[$indice]->getImagem(); ?>" rel="lightbox[listaCapturadas]" class="capturada_<?php echo $indice+1; ?>">
+                           <?php if($this->capturadas[$indice]->descricao): ?>
+                               <span class='description'><?php echo $this->capturadas[$indice]->descricao; ?></span>
+                           <?php endif; ?>
+                           <span class='view'><?php echo $this->capturadas[$indice]->getImagem(); ?></span>
+                           <span class='exif'>
+                               <input type="hidden" class="iso" value="<?php echo $this->capturadas[$indice]->getExif()->getIso(); ?>">
+                               <input type="hidden" class="exposicao" value="<?php echo $this->capturadas[$indice]->getExif()->getExposicao(); ?>">
+                               <input type="hidden" class="distanciafocal" value="<?php echo $this->capturadas[$indice]->getExif()->getDistanciafocal(); ?>">
+                               <input type="hidden" class="abertura" value="<?php echo $this->capturadas[$indice]->getExif()->getAbertura(); ?>">
+                               <input type="hidden" class="flash" value="<?php echo $this->capturadas[$indice]->getExif()->getFlash(); ?>">
+                           </span>
+                           <input type="hidden" class="identitem" value="<?php echo $this->capturadas[$indice]->id_capturada . '_' . $this->capturadas[$indice]->user; ?>">
+                           <input type="hidden" class="data" value="<?php echo $this->user->id_usuario. '_' . $this->capturadas[$indice]->id_capturada; ?>">
+                           <input type="hidden" class="pegou" value="<?php echo $this->capturadas[$indice]->pegou . '_' . $this->capturadas[$indice]->naoPegou; ?>">
+                           <input type="hidden" class="title" value="<?php echo $this->capturadas[$indice]->nome; ?>">
+                           <img src="<?php echo $this->capturadas[$indice]->getThumb(); ?>">
+                           <?php foreach($this->capturadas[$indice]->tags as $tag): ?>
+                               <input type="hidden" class="tag_<?php echo $this->capturadas[$indice]->id_capturada . '_' . $tag->id_tag; ?>" value="<?php echo $this->capturadas[$indice]->id_capturada . '_' . $tag->id_tag . '_' . $tag->nome . '_' . $this->capturadas[$indice]->user; ?>" >
+                           <?php endforeach; ?>
+                        </a>
+                    </li>
+                    <?php } ?>
+                <?php endfor;?>
+                <li class="linhaDivisoria">&nbsp;</li>
+            </ul>
+            <?php endfor; ?>
+            </article>
+        <?php endif; ?>
+    </article>  
+</div>

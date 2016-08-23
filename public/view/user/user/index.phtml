@@ -1,0 +1,42 @@
+<?php use \User\Auth\CapturaAuth; ?>
+<div class='parteConteudo'>
+    <bloquenote class="menu"><h2 class='titulo'>Menu Usuário</h2></bloquenote>
+    <article>
+       <p><span class="iconEstrela">&nbsp;</span>Reputação: <?php echo $this->usuario->pontoPermanente->soma; ?> ponto(s)</p>
+       <p><span class="iconBandeira">&nbsp;</span>Pontos Mensais: <?php echo $this->usuario->pontoMensal->soma; ?> ponto(s)</p>
+       <p><span class="iconCamera">&nbsp;</span>Total de imagens: <?php echo $this->quantidadeCapturadas; ?> capturadas</p>
+       <p>&nbsp;</p>
+    </article>  
+</div>
+<div class='parteConteudo'>
+    <bloquenote class="menu"><h2 class='titulo'>Ações</h2></bloquenote>
+    <article>
+       <ul id="menuAcoes">
+           <li><span class="iconMais">&nbsp;</span><a href="/modificar-senha">Modificar Senha</a></li>
+           <li><span class="iconUpload">&nbsp;</span><a href="/adicionar-capturada">Enviar foto</a></li>
+           <li><span class="iconVisualizar">&nbsp;</span><a href="/visualizar-capturadas/<?php echo CapturaAuth::getInstance()->getUser()->id_usuario; ?>/1">Visualizar</a></li>
+       </ul>
+    </article>  
+</div>
+
+<div class="parteConteudo">
+    <bloquenote class="batalha"><h2 class='titulo'>Batalhas</h2></bloquenote>
+    <article>
+        <?php if($this->batalhas){ foreach($this->batalhas as $batalha): ?>
+        <ul class="listaBatalhas">
+           <li><span class="iconBandeira">&nbsp;</span><?php echo $batalha->titulo; ?></li>
+           <li><span class="iconQuantidade"><?php echo $batalha->quantitadeTotalDeImagens; ?></span></li>
+           <li><?php if($batalha->participando){ ?><span class="verdeClaro"> (Participando)</span><?php }else{ ?><span class="vermelhoClaro"> (Não Participando)</span> <?php } ?> </li>
+           <li><?php if($batalha->enviarFoto):?><span class="iconCamera">&nbsp;</span><a href="/visualizar-capturadas/<?php echo CapturaAuth::getInstance()->getUser()->id_usuario; ?>/1">Participar</a><?php endif;?></li>
+           <li>
+               <?php if($batalha->quantitadeTotalDeImagens > 0): ?>
+                    <span class="iconVisualizar">&nbsp;</span><a href="/visualizar-batalha/<?php echo $batalha->id_batalha ?>" class="laranjaClaroHover">Visualizar</a>
+               <?php endif; ?>
+           </li>
+       </ul>
+        <?php endforeach; } else {?>
+            <span class="iconBandeira">&nbsp;</span> Aguardando a existência de uma nova batalha
+        <?php } ?>
+    </article>
+</div>
+

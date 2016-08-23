@@ -1,0 +1,51 @@
+<?php $this->view->headScript()->prependFile('/js/application/index/menu-rapido.js'); ?>
+<ul id="menuRapido">
+    <li><span id="iconDicas">&nbsp;</span><a id="enviarDica" class="inativo">Dicas</a></li>
+    <li><span class="separadorPequeno">&nbsp;</span></li>
+    <li><span id="iconEnviarFoto">&nbsp;</span><a id="enviarFoto" class="inativo" >Enviar Foto</a></li>
+    <li><span class="separadorPequeno">&nbsp;</span></li>
+    <li><span id="iconCriarEvento">&nbsp;</span><a id="criarEvento" class="inativo">Criar evento</a></li>
+    <li><span id="linhaSuperior">&nbsp;</span></li>
+</ul>
+
+<span id="caixaEnviarDica" class="triangle-border top">
+    <ul id="itensDica" class="escondido">
+        <li>Titulo <input id="tituloDica" val="" /></li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li><span id="contagemDicas">1500</span></li>
+    </ul>
+    <textarea id="dicas"></textarea>
+    <span class="botoesCaixa"><span><a id="btEnviarDica" class="enviar pointer">enviar</a></span></span>
+</span>
+<span id="caixaCriarEvento" class="triangle-border top">
+    <span class="blocoEvento">
+        <span>Evento <input class="evento" /> Data <input class="data" /> Hora <input class="hora" /></span>
+        <span>Contato <input class="contato" /> Local <input class="local" /></span>
+    </span>
+    <span class="botoesCaixa"><span><img id="loadEvento" class="escondido" src="/js/plugins/multiupload/images/ajax-loader.gif"><a id="btEnviarEvento" class="enviar pointer" >enviar</a></span></span>
+</span>
+<span id="caixaEnviarFoto" class="triangle-border top">
+    <ul id="botoesEnviarFoto">
+        <li>Evento <select><option selected="selected">...</option></select></li>
+        <li><span class="separadorPequeno">&nbsp;</span></li>
+        <li><a id="btnMaisTags" class="pointer">+ Tag</a> <input type="text" id="maisTags" /></li>
+        <li><span class="separadorPequeno">&nbsp;</span></li>
+        <li><a id="selecioneFotos">Selecione</a></li>
+    </ul>
+    <div id="dragAndDropFiles" class="uploadArea">
+        <h1>Arraste Imagens para aqui</h1>
+    </div>
+    <form name="multiplasCapturadas" id="multiplasCapturadas" enctype="multipart/form-data">
+        <input type="file" name="arquivo" id="arquivo" multiple class="escondido"/>
+        <input type="button" id="selecionar" value="Selecionar Imagens" class="buttonUpload escondido" />
+        <input type="submit" id="submitHandler" value="Enviar" class="escondido" style="display: none !important;" />
+    <div class="progressBar">
+        <div class="status"></div>
+    </div>
+    <span class="botoesCaixa"><span><a id="btEnviarFoto" class="enviar pointer" >enviar</a></span></span>
+    </form>
+</span>

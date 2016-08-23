@@ -1,0 +1,137 @@
+.uploadArea {
+	min-height: 100px;
+	height: auto;
+	border: 1px dotted #ccc;
+	padding: 10px;
+	cursor: move;
+	margin-bottom: 10px;
+	position: relative;
+	clear: both;
+	font-size: 23px;
+}
+
+div.dfiles h1, div.dfiles h5 {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.dfiles h5 ,  div.dfiles h5 img{
+    float: left;
+}
+
+h1.title {
+	font-family: 'Boogaloo', cursive;
+	padding: 10px;
+}
+
+.uploadArea h1 {
+	color: #ccc;
+	width: 100%;
+	z-index: 0;
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	top: 45px;
+}
+.center{
+	text-align: center;
+}
+/*
+.dfiles {
+	background-color: #E4E4E4;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    cursor: default;
+    display: inline-block;
+    height: auto;
+    margin: 3px;
+    opacity: 0.8;
+    padding: 3px;
+    position: relative;
+    width: 205px;
+    z-index: 1;
+}*/
+/*
+.inputs textarea{
+	width: 200px;
+}
+*/
+.dfiles canvas{
+	height: 60px;
+}
+/*
+div.dfiles h5 {
+	width: auto;
+	line-height: 25px;
+	margin: 0 10px 0 0;
+}
+*/
+
+.invalid {
+	border: 1px solid red !important;
+}
+
+/*
+.buttonUpload {
+	display: inline-block;
+	padding: 4px 10px 4px;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #0074cc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border: 1px solid #cccccc;
+	color: #fff;
+}
+*/
+
+.progress img {
+	margin-top: 7px;
+	margin-left: 24px;
+}
+/*
+.tituloMultiUpload, .erro{
+	width: 200px;
+}
+*/
+.close, .closeImgErro {
+    float: right;
+    margin: -4px 5px 0 -30px;
+	position: relative;
+    z-index: 2;
+}
+
+.erro {
+    background: none repeat scroll 0 0 #F88888;
+    color: #FFFFE0;
+    float: left;
+    font-size: 14px;
+    margin: 6px 0 0 -2px;
+    padding: 2px 0 2px 10px;
+    position: relative;
+    top: 0;
+    width: 490px;
+}
+/*
+.inputs{
+	float: left;
+}
+*/
+.progress{
+	float: right;
+	display: block;
+	margin: 30px 14px 0 -80px 
+}
+/*
+.inputs input {
+    margin: -12px 0 0;
+    width: 200px;
+}
+
+.textoMultiUpload, .tituloMultiUpload{
+	font-size: 16px;
+	text-transform: capitalize;
+	vertical-align: bottom;
+}*/

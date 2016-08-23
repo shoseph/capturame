@@ -1,0 +1,141 @@
+.escondido{ display: none; }
+
+.lightboxOverlay, .lightboxDestaqueOverlay { background-color: black; display: none; left: 0; opacity: 0.9; position: fixed; top: 0; z-index: 199; } 
+.lightbox, .lightboxDestaque { bottom: 20px !important; display: table; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; height: 92% !important; left: 20px !important; position: absolute; right: 20px !important; table-layout: fixed; width: 98%; z-index: 200; }
+.lightbox img, .lightboxDestaque img { display: inline-block; height: auto; image-rendering: optimizequality; max-height: 100%; max-width: 100%; vertical-align: middle; width: auto; }
+.lightbox a img, .lightboxDestaque a img { border: medium none; }
+
+
+
+.lb-comment{ margin: 6px 0 0 0; background-color: #111111; bottom: -32px; color: #555555; cursor: pointer; height: 24px; padding: 4px 0; position: absolute; text-align: center; width: 100%; z-index: 201; }
+.comentar:after { background: url("../images/seta-comentarios.png") no-repeat scroll 0 0 transparent; content: " "; float: right; height: 30px; margin: -3px 0 0; width: 20px; }
+.lb-comment:before { background: url("../images/seta-comentarios.png") no-repeat scroll 0 0 transparent; content: " "; float: left; height: 30px; margin: -3px 0 0; width: 20px; }
+.lb-facebook{ background-color: #222222; display: none; height: 376px; margin: -2px 0 0; overflow: auto; padding: 10px 0 0; position: relative; top: 2px; width: 100%; z-index: 201; float:left; }
+.lb-outerContainer { background-color: #FFF; float: left; height: 100% !important; margin: 0 auto;  position: relative; width: 78% !important; }
+.lb-outerContainer:after { clear: both; content: ""; display: table; }
+.destaqueCapturadas img { height: 52px; width: auto; }
+
+/* regra para o facebook */
+.fb-comments{ margin: 0px; width: 100% !important;}
+.fb-comments iframe[style]{width: 100% !important;}
+.fb-like-box{ min-width:280px;width: 100% !important;}
+.fb-like-box iframe[style]{min-width:280px;width: 100% !important;}
+.uiLinkSubtle iframe[style]{display: none;}
+.fb-comments span{width: 100% !important;}
+.fb-comments iframe span[style]{width: 100% !important;}
+.fb-like-box span{min-width:280px;width: 100% !important;}
+.fb-like-box iframe span[style]{min-width:280px;width: 100% !important;}
+.-cx-PRIVATE-pluginBoxContainer__border{ border:none}
+
+/* Regra visualização da imagem */
+.lb-container { text-align: center; vertical-align: middle; width: 100%; height: 100%; }
+.lb-container * { vertical-align: middle; }
+.lb-container span { display: inline-block; height: 100%; }
+.lb-loader { height: 25%; left: 0; line-height: 0; position: absolute; text-align: center; top: 40%; width: 100%; }
+.lb-nav { height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 201; }
+.lb-container > .nav { left: 0; }
+.lb-nav a { outline: medium none; }
+.lb-prev, .lb-next { background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); display: block; height: 100%; width: 49%; }
+.lb-prev { float: left; left: 0; }
+.lb-next { float: right; right: 0; }
+.lb-prev:hover { background: url("../images/prev.png") no-repeat scroll left 48% transparent; }
+.lb-next:hover { background: url("../images/next.png") no-repeat scroll right 48% transparent; }
+.lb-dataContainer { background: repeat scroll 0 0 #F6F6F6; display: inherit;  float: right; height: 100% !important; margin: 0 auto; width: 22% !important; z-index: 201;  color: #555;}
+.lb-dataContainer:after { clear: both;  content: "";  display: table;}
+.lb-dataContainer:after { clear: both; content: ""; display: table; }
+.lb-data { min-height: 180px; max-height: 200px; padding: 0 10px; }
+.cp-add-tag { height: 15px; width: 200px; }
+.lb-data .lb-details { float: left; height: 20px; line-height: 1.1em; text-align: left; width: 100%; }
+.lb-data .lb-exif { float: left; height: 20px; line-height: 1.1em; text-align: left; width: 100%; }
+
+.lb-data .lb-exif * { float: left; font-size: 11px; margin: 2px 2px 2px 2px;}
+.lb-data .lb-exif span { font-weight: bold; }
+.lb-data .lb-exif bloquenote { font-weight: normal; }
+.exif-iso, .exif-exposicao, .exif-distanciafocal, .exif-abertura, .exif-flash{ background: url("../images/background-tag.png") repeat scroll 0 0 transparent; border: 1px solid rgba(105, 105, 105, 0.6); border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; float: left; font-size: 12px; padding: 0; z-index: 1000; }
+.lb-data .lb-exif .exif-iso * { color: #99CC33; }
+.lb-data .lb-exif .exif-exposicao * { color: #FFAC33; }
+.lb-data .lb-exif .exif-distanciafocal * { color: #998CFF; }
+.lb-data .lb-exif .exif-abertura * { color: #FFCF00; }
+.lb-data .lb-exif .exif-flash * { color: #FF6666; }
+
+.lb-data .lb-caption { font-size: 13px; font-weight: bold; line-height: 1em; display: inline-block; width: 100%; }
+.lb-desc { float: left; font-size: 10px; height: 80px; margin: 40px 0 0; text-align: justify; width: 100%; }
+.lb-menu-tags{ margin: -10px 0 6px; display: block; }
+.lb-menu-tags li, .lista-links li{ cursor: pointer; height: 20px; width: 210px; background: none; margin 0px; }
+.lb-action-links { bottom: 80px; float: left; left: 78%; padding: 0 !important; position: absolute; width: 100%; z-index: 194; }
+.lb-exec { background: none repeat scroll 0 0 #333333; float: left; max-height: 200px; min-height: 40px; width: 22% !important; z-index: 201 }
+.lb-dataContainer > div{ padding: 0px 10px; }
+
+
+/* curtir e não curtir */
+.lb-like{ width: 154px; margin: 20px auto; }
+.lb-like > span.sim { cursor: pointer; float: left; height: 90px;  width: 60px; }
+.lb-like > span.nao { cursor: pointer; float: right; height: 90px;  width: 60px; }
+.lb-like .quantidadePegou { color: #FFF; background: url("../images/icones.png") no-repeat scroll 0 -84px transparent; float: left; height: 21px; text-align: center; width: 58px; }
+.lb-like .quantidadeNaoPegou { color: #FFF; background: url("../images/icones.png") no-repeat scroll -61px -84px transparent; float: left; height: 21px; text-align: center; width: 58px; }
+.btnPegou { background: url("../images/icones.png") no-repeat scroll -425px 0 transparent; float: left; height: 62px; margin: 0 0 4px 0; width: 58px; }
+.btnNaoPegou { background: url("../images/icones.png") no-repeat scroll -487px 0 transparent; float: left; height: 62px; margin: 0 0 4px 0; width: 58px; }
+
+/* lista de links */
+.lb-links { bottom: 0; display: block; float: left; max-height: 104px; min-height: 52px; padding: 0 !important; position: absolute; width: auto; z-index: 201;}
+
+.lb-links li { background: url("../images/icones.png") no-repeat scroll 0 0 transparent; float: left; height: 52px; margin: 0 5px 0 0; width: 50px;}
+.lb-links li:hover:before { background: url("../images/icones.png") no-repeat scroll -58px -62px transparent; float: left; height: 22px; margin: -22px 0px 0 0; width: 50px; content: " "; }
+
+.lb-links li.download:hover:before { background-position:  -58px -62px; }
+.lb-links li.tag:hover:before { background-position:  -0px -62px; }
+.lb-links li.batalha:hover:before { background-position:  -118px -62px; }
+.lb-links li.editar:hover:before { background-position:  -178px -62px; }
+.lb-links li.autor:hover:before { background-position:  -239px -62px; }
+
+.lb-links li.off{ cursor: default; }
+.lb-links li.download { background-position: -54px 0px; }
+.lb-links li.download.off { background-position: -266px 0px; }
+
+.lb-links li.tag { background-position: 0px 0px; }
+.lb-links li.tag.off { background-position: -212px 0px; }
+
+.lb-links li.batalha { background-position: -108px 0px; }
+.lb-links li.batalha.off { background-position: -320px 0px; }
+
+.lb-links li.editar { background-position: -160px 0px; }
+.lb-links li.editar.off { background-position: -372px 0px; }
+
+.lb-links li.autor { background-position: -671px 0px; }
+
+.lb-tags{ background: url("../images/background-tag.png") repeat scroll 0 0 transparent; border: 1px solid rgba(105, 105, 105, 0.6); border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; display: none; float: left; font-size: 12px; max-height: 120px; min-height: 40px; overflow: auto; padding: 0; position: absolute; width: 100%; z-index: 1000; }
+.lb-lista-tags { padding: 10px; }
+.lb-lista-tags > li { background: none repeat scroll 0 0 #464646; border-radius: 8px 8px 8px 8px; float: left; margin: 0 6px 6px 0; padding: 3px; width: auto; }
+.lb-lista-tags > li > a { color: #bbb !important; cursor: pointer; float: left; margin: 0 4px; min-height: 13px; vertical-align: middle;}
+[rel^="lightbox"] .description, [rel^="lightbox"] .view, [rel^="lightbox"] .download { display: none; }
+[rel="destaque"] .description, [rel="destaque"] .view, [rel="destaque"] .download { display: none; }
+.lb-data .lb-number { clear: left; display: inline-block; font-size: 11px; padding-bottom: 1em; width: 100%; }
+.lb-data .lb-close { float: right; outline: medium none;  padding-bottom: 0.7em; }
+.lb-closeContainer {float: right; margin: -10px 0 0 0; }
+.lb-data .lb-close:hover { cursor: pointer; }
+.imgClose { background: url("../images/icones.png") no-repeat scroll 2px -104px transparent; display: block; height: 19px; width: 18px; }
+
+/* tag */
+.cp-add-tag { border: medium none; font-size: 18px; height: 18px; margin: 10px; width: 80%;}
+.cp-cancel-add-tag{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1796px 8px transparent; cursor: pointer; display: inline-block; float: right; height: 40px; margin: 0; padding: 0; width: 26px; }
+
+/*.lb-add-tag:before { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -846px -4px transparent; content: ""; float: left; height: 15px; margin: 3px 8px 0 0; width: 16px; }
+.lb-add-tag:hover:before { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -825px -4px transparent; content: ""; float: left; height: 15px; margin: 3px 8px 0 0; width: 16px; }*/
+
+
+/* Batalhando */
+.lb-lista-batalhas{ float: left; height: auto; padding: 0 0 10px; width: 100%; }
+.lb-lista-batalhas > h2 { color: #777777; margin: 10px; font-weight: 600; }
+.lb-lista-batalhas hr {  border: 0.1px solid #444444; float: left; margin: 0 0 10px; width: 100%; }
+.lb-dataContainer > div.lb-menu-batalhando { padding: 20px 10px; }
+.lb-dataContainer > div.lb-menu-batalhando #lb-batalhar { cursor: pointer; }
+.lb-dataContainer > div.lb-lista-batalhas { z-index: 200; position:relative; background: none no-repeat scroll 0 0 #2A2A2A; color: #000000; display: none; float: left; height: 180px; margin: -260px 0 0; padding: 20px 10px; }
+.lb-lista-batalha { cursor: pointer; float: left; height: 20px; margin: 3px 0; padding: 0 4%; width: 92%; }
+.lb-lista-batalha label{ cursor: pointer; color: #aaa; }
+.lb-lista-batalha > span.quantidadeRestante { background: none repeat scroll 0 0 #323329; color: #555555; float: right; font-size: 14px; padding: 3px; }
+.lb-lista-batalha:hover { background: none no-repeat scroll 0 0 #2e2e2e; }
+
+
+/*anuncios*/
+.lb-anuncio{ float: left; margin: 10px 0px 0px 0px; width: 94%; text-align: center;}
+.lb-titulo-apoio{ float: left; font-family: cursive; font-size: 21px; margin: 20px 0 0; text-align: center; width: 94%;}

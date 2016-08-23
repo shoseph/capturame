@@ -1,0 +1,100 @@
+<?php $this->tituloHelper()->setTitulo('Eventos Capturados'); ?>
+<?php $this->headScript()->prependFile('/js/capturada/index/visualizar-capturadas.js');  ?>
+
+<?php echo $this->paginadorHelper("/eventos/", $this->totalPaginas, $this->pagina); ?>
+    <?php foreach($this->tags as $indice => $tag){ ?>
+    <div class="parteConteudo">
+        <bloquenote class="evento">
+            <h2 class="titulo"><?php if(count($tag->imagens) > 0) { ?> <a href="/tag/<?php echo $tag->nome; ?>/1"><?php echo $tag->nome; ?></a> <?php } else { ?> <?php echo $tag->nome; ?>  <?php } ?></h2>
+            <h2 class="subtitulo"><?php if(count($tag->imagens)) { ?> Clique no título para visualizar o evento <?php } else { ?> Não existe imagens no evento... <?php } ?> </h2>
+        </bloquenote>
+        <article>
+           <h3 class="paragrafoTitulo"><?php if(count($tag->imagens)) { ?> <a href="/tag/<?php echo $tag->nome; ?>/1"><?php echo $tag->nome; ?></a> <?php } else { ?> <?php echo $tag->nome; ?>  <?php } ?></h3>
+           <div class="conteudoEvento">
+               <?php if(array_key_exists(0, $tag->imagens)){ ?>
+                   <span class="conteudoEventoImagemPrincipal">
+                       <a href="<?php echo $tag->imagens[0]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" title="<?php echo $tag->imagens[0]->capturada->nome; ?>">
+                           <?php if($tag->imagens[0]->capturada->descricao): ?>
+                               <span class='description'><?php echo $tag->imagens[0]->capturada->descricao; ?></span>
+                           <?php endif; ?>
+                           <span class='view'><?php echo $tag->imagens[0]->capturada->getImagem(); ?></span>
+                           <span class='exif'>
+                               <input type="hidden" class="iso" value="<?php echo $tag->imagens[0]->capturada->getExif()->getIso(); ?>">
+                               <input type="hidden" class="exposicao" value="<?php echo $tag->imagens[0]->capturada->getExif()->getExposicao(); ?>">
+                               <input type="hidden" class="distanciafocal" value="<?php echo $tag->imagens[0]->capturada->getExif()->getDistanciafocal(); ?>">
+                               <input type="hidden" class="abertura" value="<?php echo $tag->imagens[0]->capturada->getExif()->getAbertura(); ?>">
+                               <input type="hidden" class="flash" value="<?php echo $tag->imagens[0]->capturada->getExif()->getFlash(); ?>">
+                           </span>
+                           <input type="hidden" class="identitem" value="<?php echo $tag->imagens[0]->capturada->id_capturada . '_' . $tag->imagens[0]->capturada->user; ?>">
+                           <input type="hidden" class="pegou" value="<?php echo $tag->imagens[0]->capturada->pegou . '_' . $tag->imagens[0]->capturada->naoPegou; ?>">
+                           <input type="hidden" class="data" value="<?php echo $tag->imagens[0]->capturada->user. '_' . $tag->imagens[0]->capturada->id_capturada; ?>">
+                           <img src="<?php echo $tag->imagens[0]->capturada->getImagem(); ?>">
+                        </a>
+                   </span>
+               <?php } else { ?>
+                   <span class="conteudoEventoImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+               <span class="conteudoEventoInfo">
+               <?php if(array_key_exists(1, $tag->imagens)){ ?>
+                   <a href="<?php echo $tag->imagens[1]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" title="<?php echo $tag->imagens[1]->capturada->nome; ?>">
+                       <?php if($tag->imagens[1]->capturada->descricao): ?>
+                           <span class='description'><?php echo $tag->imagens[1]->capturada->descricao; ?></span>
+                       <?php endif; ?>
+                       <span class='view'><?php echo $tag->imagens[1]->capturada->getImagem(); ?></span>
+                       <span class='exif'>
+                           <input type="hidden" class="iso" value="<?php echo $tag->imagens[1]->capturada->getExif()->getIso(); ?>">
+                           <input type="hidden" class="exposicao" value="<?php echo $tag->imagens[1]->capturada->getExif()->getExposicao(); ?>">
+                           <input type="hidden" class="distanciafocal" value="<?php echo $tag->imagens[1]->capturada->getExif()->getDistanciafocal(); ?>">
+                           <input type="hidden" class="abertura" value="<?php echo $tag->imagens[1]->capturada->getExif()->getAbertura(); ?>">
+                           <input type="hidden" class="flash" value="<?php echo $tag->imagens[1]->capturada->getExif()->getFlash(); ?>">
+                       </span>
+                       <input type="hidden" class="identitem" value="<?php echo $tag->imagens[1]->capturada->id_capturada . '_' . $tag->imagens[1]->capturada->user; ?>">
+                       <input type="hidden" class="pegou" value="<?php echo $tag->imagens[1]->capturada->pegou . '_' . $tag->imagens[1]->capturada->naoPegou; ?>">
+                       <input type="hidden" class="data" value="<?php echo $tag->imagens[1]->capturada->user . '_' . $tag->imagens[1]->capturada->id_capturada; ?>">
+                       <img src="<?php echo $tag->imagens[1]->capturada->getThumb(); ?>">
+                    </a>
+               <?php } else { ?>
+                   <span class="conteudoEventoImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+               <?php if(array_key_exists(2, $tag->imagens)){ ?>
+                   <a href="<?php echo $tag->imagens[2]->capturada->getImagem(); ?>" rel="lightbox[listaCapturadas<?php echo $indice; ?>]" title="<?php echo $tag->imagens[2]->capturada->nome; ?>">
+                       <?php if($tag->imagens[2]->capturada->descricao): ?>
+                           <span class='description'><?php echo $tag->imagens[2]->capturada->descricao; ?></span>
+                       <?php endif; ?>
+                       <span class='view'><?php echo $tag->imagens[2]->capturada->getImagem(); ?></span>
+                       <span class='exif'>
+                           <input type="hidden" class="iso" value="<?php echo $tag->imagens[2]->capturada->getExif()->getIso(); ?>">
+                           <input type="hidden" class="exposicao" value="<?php echo $tag->imagens[2]->capturada->getExif()->getExposicao(); ?>">
+                           <input type="hidden" class="distanciafocal" value="<?php echo $tag->imagens[2]->capturada->getExif()->getDistanciafocal(); ?>">
+                           <input type="hidden" class="abertura" value="<?php echo $tag->imagens[2]->capturada->getExif()->getAbertura(); ?>">
+                           <input type="hidden" class="flash" value="<?php echo $tag->imagens[2]->capturada->getExif()->getFlash(); ?>">
+                       </span>
+                       <input type="hidden" class="identitem" value="<?php echo $tag->imagens[2]->capturada->id_capturada . '_' . $tag->imagens[2]->capturada->user; ?>">
+                       <input type="hidden" class="pegou" value="<?php echo $tag->imagens[2]->capturada->pegou . '_' . $tag->imagens[2]->capturada->naoPegou; ?>">
+                       <input type="hidden" class="data" value="<?php echo $tag->imagens[2]->capturada->user . '_' . $tag->imagens[2]->capturada->id_capturada; ?>">
+                       <img src="<?php echo $tag->imagens[2]->capturada->getThumb(); ?>">
+                    </a>
+               <?php } else { ?>
+                   <span class="conteudoEventoImagemPrincipal">
+                       <img />
+                   </span>
+               <?php } ?>
+                   <p><?php echo $tag->nome; ?></p>
+                   <ul>
+                       <li><span class="iconCapturadas">&nbsp;</span><?php echo $tag->quantidadeCapturadas; ?> Capturadas</li>
+                       <li><span class="iconData">&nbsp;</span><?php echo $tag->getData(); ?></li>
+                   </ul>
+               </span>
+           </div>
+        </article>  
+    </div>
+<?php } ?>
+
+
+
+
+

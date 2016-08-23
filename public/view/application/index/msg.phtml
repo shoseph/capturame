@@ -1,0 +1,9 @@
+<?php $this->view->headScript()->prependFile('/js/application/index/msg.js');  ?> 
+<?php $msgs = $this->view->hasMessages ? $this->view->msg : $this->view->flashMessenger()->getMessages(); ?> 
+<?php if ($this->view->hasMessages || $this->view->flashMessenger()->hasMessages()): ?>
+<div id="mensagens">
+   <?php  foreach($msgs as $msg): ?>
+       <div class="<?php echo $msg->status ? 'msgSucesso' : 'msgFalha'; ?>"><?php echo $msg->msg; ?></div>
+   <?php endforeach;  ?>
+</div>
+<?php endif;?>

@@ -1,0 +1,21 @@
+<?php 
+    use User\Auth\CapturaAuth;
+    $indicacaoCapturada = $this->view->indicacaoCapturada ? $this->view->indicacaoCapturada : 0;
+    $baseUrl = $this->view->baseUrl ? $this->view->baseUrl : 0;
+    $usuarioLogado = CapturaAuth::getUser() ? CapturaAuth::getUser()->id_usuario : 0;
+    $batalhando =  CapturaAuth::getInstance()->getUser() ?  CapturaAuth::getInstance()->getUser()->getBatalhando() : 0;
+
+    $script = "var indicacaoCapturada = {$indicacaoCapturada};  
+               var urlLoadCapturada = '{$this->view->url}'; 
+               var uriLoadCapturada = '{$this->view->uri}'; 
+               var usuarioLogado = {$usuarioLogado};
+               var batalhando = '{$batalhando}';
+               var baseUrl = '{$baseUrl}';
+    "; 
+
+    $this->view->headScript() 
+               ->appendScript($script)
+               ->appendFile('/js/application/index/load-capturada.js')
+    ; 
+    
+?>

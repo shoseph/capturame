@@ -1,0 +1,514 @@
+@font-face {
+	font-family: "asf";
+	src: url("/fonts/asf.ttf");
+}
+
+
+
+
+/**
+Regras gerais
+
+**/
+body { font-family: "arial" !important; overflow: visible;}
+a { text-decoration: none; }
+body > header > nav, body > section { margin: 0 auto ; width: 1000px; clear: both; }
+#corpo{ margin: 40px auto !important;  }
+.separadorPequeno { background: url("/images/captura2/line.png") repeat-y scroll 0 0 transparent ; display: inline-block; height: 13px; width: 1px; }
+.escondido { display: none; }
+.pointer{ cursor: pointer; }
+a, a:active, a:visited{ text-decoration: none !important; color: #808080 !important; }
+a:hover{ text-decoration: none; color: #297ECC !important; }
+.verdeClaro{ color: #7AC943 !important; }
+.voltar ,input[type='submit']{ border: medium none; color: #297ECC; display: block; margin: 10px 0 0; padding: 5px;}
+.bugfixespacamento{ clear: both; float: left; margin: 0px auto; }
+.negrito{ font-weight: bold; }
+.fieldrequired{	border: 1px solid #ffa3a3; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+.required { background: url("/images/captura2/required_10.png") no-repeat scroll 0 0 transparent; display: inline-block; height: 9px; margin: 0 !important; position: relative; right: 118px; top: 0; width: 8px; }
+.hover{ cursor:pointer; }
+.centralizado{ text-align: center;}
+#linkSairBatalha{ color : #fff !important; font-size: 14px;}
+#menuFlutuante h1{ display: inline-block; }
+
+#googleadsensetab{ background: #fff no-repeat; margin: 10px 0 0 0 ; float:left; }
+
+/*Cores*/
+.vermelhoClaro { color: #FF6666; }
+.verdeClaro { color: #99CC33; }
+
+#facebook-comments {
+    margin: 0 0 0 -200px;
+}
+
+/* regras gerais */
+li.hover:hover{ background: #E6F8FF; }
+
+/*Mensagens*/
+#mensagens { float: left; margin: 0 auto; position: fixed; width: 100%; z-index: 200; }
+#mensagens > div{ background-position: 3px center; background-repeat: no-repeat;  border: 1px dashed; float: left; margin: 10px 0 0 2px; padding: 10px 0 10px 30px; width: 150px;}
+.msgInfo { background-color: #BDE5F8; background-image: url("/images/info.png"); clear: both; color: #00529B; }
+.msgSucesso { background-color: #DFF2BF; background-image: url("/images/captura2/sucesso.png"); clear: both; color: #4F8A10;  }
+.msgAlerta { background-color: #FEEFB3; background-image: url("/images/captura2/alerta.png"); clear: both; color: #9F6000; }
+.msgFalha { background-color: #FFBABA; background-image: url("/images/captura2/erro.png"); clear: both; color: #D8000C; }
+
+
+/* Mensagens centrais */
+#mensagensSobrepostas {margin: 0 auto; position: fixed; top: 0; width: 100%; z-index: 210; }
+#mensagensSobrepostas > div { background-position: 3px center; background-repeat: no-repeat; margin: 1px auto 0 auto; padding: 5px 0 5px 40px; text-align: center; width: 958px; }
+
+.msgInfo { background-color: #BDE5F8; background-image: url("/images/info.png"); clear: both; color: #00529B; }
+.msgSucesso { background-color: #DFF2BF; background-image: url("/images/captura2/sucesso.png"); clear: both; color: #4F8A10;  }
+.msgAlerta { background-color: #FEEFB3; background-image: url("/images/captura2/alerta.png"); clear: both; color: #9F6000; }
+.msgFalha { background-color: #FFBABA; background-image: url("/images/captura2/erro.png"); clear: both; color: #D8000C; }
+
+
+
+
+/*Lightbox*/
+#capturalightbox{ clear: both; margin: 0 auto; width: 1000px; }
+
+/** Icones do Header **/
+header { background: #3FA9F5; height: 40px; width: 100%; position: fixed; margin: -40px 0 0 0 !important; z-index: 10; }
+#menuPrincipal { float:right; margin: 10px 0px 0 4px; list-style: none; }
+#menuPrincipal li { float:right; margin: 0 2px 0 10px; }
+#menuPrincipal li #home{ font-family: 'asf'; font-size: 20px; color: white !important; width: 94px; height: 19px; display: inline-block; margin: 0 10px;}
+#menuPrincipal li #novosUsuarios{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -62px -2px transparent;  width: 19px; height: 19px; display: inline-block;}
+#menuPrincipal li #novosUsuarios:hover { background-position: -82px -2px; }
+#menuPrincipal li #novasBatalhas{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -179px -2px transparent;  width: 19px; height: 19px; display: inline-block;}
+#menuPrincipal li #novasBatalhas:hover { background-position: -199px -2px; }
+#menuPrincipal li #novasFotos{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -237px -2px transparent;  width: 19px; height: 19px; display: inline-block;}
+#menuPrincipal li #novasFotos:hover { background-position: -257px -3px; width: 18px; margin-right: 1px; }
+#menuPrincipal li #novidades{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -467px -2px transparent;  width: 19px; height: 19px; display: inline-block;}
+#menuPrincipal li #novidades:hover { background-position: -487px -2px; }
+#menuPrincipal li #maisCurtidas{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -293px -2px transparent;  width: 19px; height: 19px; display: inline-block;}
+#menuPrincipal li #maisCurtidas:hover { background-position: -313px -2px; }
+#menuPrincipal li .contadorMenuPrincipal { background: none repeat scroll 0 0 #CEBC55; border-radius: 0 0 7px 7px; -webkit-border-radius: 0 0 7px 7px; -moz-border-radius: 0 0 7px 7px; color: #FFFFFF; display: block; float: right; font-size: 13px; font-weight: 300; height: 17px; margin: -2px 0 0 10px; max-width: 40px; min-width: 10px;  padding: 3px 2px 0; position: absolute; text-align: center; top: 0; vertical-align: middle; z-index: 2;}
+#menuPrincipal li .contadorMenuPrincipalVazio { background: none repeat scroll 0 0 transparent; border-radius: 0 0 7px 7px; -webkit-border-radius: 0 0 7px 7px; -moz-border-radius: 0 0 7px 7px; color: #FFFFFF; display: block; float: right; font-size: 13px; font-weight: 300; height: 17px; margin: -2px 0 0 10px; max-width: 40px; min-width: 10px;  padding: 3px 2px 0; position: absolute; text-align: center; top: 0; vertical-align: middle; z-index: 2;}
+
+.backgroundAzul { float: left; background: url("/images/captura2/sprite-icons.png") no-repeat scroll 0 -109px transparent; cursor: pointer; height: 40px;  width: 40px; overflow: hidden;}
+#botaoCapturaHeader { color: #FFFFFF !important; display: inline-block; font-family: asf; font-size: 40px; height: 40px !important; text-align: center; vertical-align: middle !important;  width: 40px; direction: ltr; line-height:45px; vertical-align:middle; }
+#tituloPagina{ float: left; font-family: 'asf'; font-size: 24px; margin: 10px 0 0 6px ; color: #D0E7F7;}
+
+
+#buscaCaptura{ margin: 10px -10px 0 0px; float: right; }
+#buscaCaptura #iconLupa{ margin: 0 6px 0px 2px; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -2px -2px transparent; width: 19px; height: 19px; display: inline-block; }
+#buscaCaptura > input{ border:none; font-size: 12px; height: 21px; padding: 0 6px; width: 175px; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -854px  -46px transparent; float: right; }
+
+/** Icones do Header **/
+
+
+#corpo #esquerda { float: left; display: inline-block; width: 800px; }
+#corpo #esquerda aside{ float: left; width: 40px;  display: inline-block; }
+
+/*Menu Flutuante*/
+#corpo #esquerda > aside > #menuFlutuante { display:none; background: none no-repeat scroll 0 0 #91D2F2; min-height: 100px; max-height: 520px; margin: 0; padding: 10px 0; position: fixed; top: 40px; width: 210px; z-index: 110; }
+#corpo #esquerda > aside > #menuFlutuante > ul{ float: left; width: 204px;}
+#corpo #esquerda > aside > #menuFlutuante > ul > li { float: left; height: 23px; margin: 0 0 1px; width: 100%; padding: 0 0 0 6px; }
+#corpo #esquerda > aside > #menuFlutuante > ul > li:hover{ background: #E6F8FF; }
+#corpo #esquerda > aside > #menuFlutuante > ul > li.cabecalho, 
+#corpo #esquerda > aside > #menuFlutuante > ul > li.cabecalho:hover { background: none; color: #3180B5; font-size: 12px; font-weight: bold; margin: 0 0 -10px 0px; }
+#corpo #esquerda > aside > #menuFlutuante > ul > li.espacamento { background: none; margin: 0; height: 10px; }
+#corpo #esquerda > aside > #menuFlutuante a, #corpo #esquerda > aside > #menuFlutuante a:visited { font-size: 14px; color: #fff !important; }
+#corpo #esquerda > aside > #menuFlutuante > ul > li a:hover, 
+#corpo #esquerda > aside > #menuFlutuante > ul > li a.hover { color: #808080 !important; }
+#corpo #esquerda > aside > #menuFlutuante span[class^="icon"]{ margin: 2px 5px 0 10px; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -464px -1px transparent; width: 18px; height: 20px; display: inline-block; }
+
+
+#corpo #esquerda > aside > #menuFlutuante .iconNovidade{ background-position: -464px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconNovidade.hover{ background-position: -484px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconBatalha{ background-position: -412px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconBatalha.hover{ background-position: -430px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconDicas{ background-position: -1129px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconDicas.hover{ background-position: -1149px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconEnviar{ background-position: -1190px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconEnviar.hover{ background-position: -1210px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconNovasFotos{ background-position: -236px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconNovasFotos.hover{ background-position: -256px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconCaptureSeuEvento{ background-position: -824px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconCaptureSeuEvento.hover{ background-position: -845px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconEventos{ background-position: -645px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconEventos.hover{ background-position: -665px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconBatalhas{ background-position: -181px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconBatalhas.hover{ background-position: -200px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconNovosUsuarios{ background-position: -63px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconNovosUsuarios.hover{ background-position: -82px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconReputacao{ background-position: -1072px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconReputacao.hover{ background-position: -1093px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconMaisCurtidas{ background-position: -295px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconMaisCurtidas.hover{ background-position: -315px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconRevista{ background-position: -707px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconRevista.hover{ background-position: -727px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconVideos{ background-position: -950px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconVideos.hover{ background-position: -970px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconReunioes{ background-position: -527px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconReunioes.hover{ background-position: -546px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconCalendario{ background-position: -766px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconCalendario.hover{ background-position: -787px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconQuemSomos{ background-position: -122px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconQuemSomos.hover{ background-position: -141px -1px !important; }
+
+#corpo #esquerda > aside > #menuFlutuante .iconDuvidas{ background-position: -1009px -1px !important; }
+#corpo #esquerda > aside > #menuFlutuante .iconDuvidas.hover{ background-position: -1029px -1px !important; }
+
+
+#corpo #esquerda aside #logoHome{ background: url("/images/captura2/sprite-background.png") no-repeat scroll 0px 0px transparent; height: 102px; width: 113px;  display: inline-block; margin: 0px 20px 0;}
+#corpo #esquerda aside #logoHome:hover{ background-position: -113px 0px; }
+#corpo #esquerda aside h2{ margin: 0 0 0 6px; color: #808080; font-weight: bold; }
+#corpo #esquerda aside h4{ margin: 0 0 0 6px; color: #808080; font-size: 11px; } 
+#corpo #esquerda aside .linhaMenuLateral{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -158px -382px transparent; float: left; height: 2px; margin: 0px 24px 4px 0; width: 150px; }
+#corpo #esquerda aside #infoUser { margin: 10px 0 ; font-size: 10px; float: left; color: #808080; } 
+#corpo #esquerda aside #infoUser #imgUser{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -152px -402px transparent; float: left; width: 54px; display: block; height: 40px; }
+#corpo #esquerda aside #infoUser #imgUser img{ margin: -11px 8px;}
+#corpo #esquerda aside #infoUser #dataUser { float:left; width: 80px; }
+#corpo #esquerda aside #infoUser #dataUser h3 { margin: 4px 0 -3px 0; font-size: 11px; font-weight: bold; }
+#corpo #esquerda aside #infoUser #dataUser > h3 > span{ color: #7AC943; vertical-align: top !important; font-weight: normal; }
+
+#corpo #esquerda aside .menuAcoesUsuario { float:left; margin: 2px 0 2px 4px; list-style: none; font-size: 10px;  color: #808080; font-weight: bold; }
+#corpo #esquerda aside .menuAcoesUsuario li { float:left; margin: -2px 2px 0 2px; }
+#corpo #esquerda aside .menuAcoesUsuario li.linha { width: 120px; }
+#corpo #esquerda aside .menuAcoesUsuario li .separadorPequeno { float:left; height: 16px; margin: -2px 0 0;}
+
+/*Menu acesso usuário*/
+#corpo #esquerda aside .menuAcessoUsuario { float:left; margin: 0 0 0 1px; list-style: none; font-size: 10px;  color: #808080; font-weight: bold; }
+#corpo #esquerda aside .menuAcessoUsuario > li { float:left; margin: 0px; }
+#corpo #esquerda aside .menuAcessoUsuario > li.itens { width: 150px; }
+#corpo #esquerda aside .menuAcessoUsuario > li.itensCentralizados { width: 150px; margin: -3px 0 2px -1px; text-align: center; padding: 1px 0 4px 0;}
+#corpo #esquerda aside .menuAcessoUsuario > li.itens #entrar { width: 150px; float: left; cursor:pointer; }
+#corpo #esquerda aside .menuAcessoUsuario > li.itens > span { float: left; margin: 4px 0 0 0;}
+#corpo #esquerda aside .menuAcessoUsuario > .background {  background: url("/images/captura2/sprite-background.png") no-repeat scroll -1px -383px transparent; float: left; height: 44px; margin: 21px 0 0; position: absolute; width: 155px; z-index: -100; }
+#corpo #esquerda aside .menuAcessoUsuario > .cabecalho { width: auto; margin: 0 0 -4px 10px; }
+#corpo #esquerda aside .menuAcessoUsuario > a { vertical-align: top !important; }
+#corpo #esquerda aside .menuAcessoUsuario > li .separadorPequeno { float:left; height: 16px; margin: -2px 0px 0 6px;}
+#corpo #esquerda aside .menuAcessoUsuario > li > #separadorMenuAcessoUsuario{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -160px -383px transparent; float: left; height: 12px; margin: 0 0 0 -48px; width: 156px; }
+#corpo #esquerda aside .menuAcessoUsuario > li #login { padding: 0 6px; font-size: 10px; height: 21px; border: none;  width: 90px; margin: 0px 0px 2px 13px; background: url("/images/captura2/sprite-background.png") no-repeat scroll -208px -398px transparent; }
+#corpo #esquerda aside .menuAcessoUsuario > li #senha { padding: 0 6px; font-size: 10px; height: 21px; border: none; width: 90px; margin: -1px 0px 5px 10px; background: url("/images/captura2/sprite-background.png") no-repeat scroll -208px -398px transparent; }
+#corpo #esquerda aside .menuAcessoUsuario > li input[type='submit'] { display:none; }
+#corpo #esquerda aside .menuAcessoUsuario > li #esqueceuSenha { margin: 0 0 0 10px; }
+
+/*Menu dos anuncios*/
+#corpo #esquerda aside #separador{ margin: 20px 0; float:left; } 
+#corpo #esquerda aside #menuAcoesAnuncio { float:left; margin: 0 0 0 1px; list-style: none; font-size: 10px;  color: #808080; font-weight: bold; }
+#corpo #esquerda aside #menuAcoesAnuncio li { float:left; margin: -2px 4px; }
+#corpo #esquerda aside #menuAcoesAnuncio li .separadorPequeno { float:left; height: 16px; margin: -2px 0 0;}
+#corpo #esquerda aside #menuAcoesAnuncio #separadorMenuAnuncio{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -160px -383px transparent; float: left; height: 12px; margin: -1px 0 0 -5px; width: 156px; }
+#corpo #esquerda aside #infoAnuncio{  /*background: url("/images/captura2/sprite-background.png") no-repeat scroll 5px -377px transparent;*/ float: left; height: 66px; margin: 4px 0 6px -3px; width: 156px }
+#corpo #esquerda aside #infoAnuncio img { margin: 0px 0 0 12px;}
+
+
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido{ border-right: 1px solid #BEDCF4; background: none repeat scroll 0 0 #FFFFFF; list-style: none outside none; margin: 0px 0 0 4px; padding: 7px 0 0px; position: fixed; width: 556px; z-index: 100;}
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido li{ float:right; margin: 0 10px; }
+
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido a { color: #808080; font-weight: bold; cursor: pointer; }
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido li #iconDicas{ margin: 0 5px 0 0; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1151px -2px transparent; width: 19px; height: 19px; display: inline-block; }
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido li #iconEnviarFoto{ margin: 0 5px 0 0; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1211px  -2px transparent; width: 19px; height: 19px; display: inline-block; }
+#corpo #esquerda #conteudo #blocoMenuRapido #menuRapido li #iconCriarEvento{ margin: 0 5px 0 0; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -665px -2px transparent; width: 19px; height: 19px; display: inline-block; }
+
+
+/*    Menu conteúdo     */
+#corpo #esquerda #conteudo #blocoConteudo { float: left; margin: 30px 14px -14px 0; width: 540px;}
+#corpo #esquerda #conteudo .usuarioDeslogado { margin: 0px 14px -14px 0 !important; }
+#corpo #esquerda #conteudo #blocoConteudo > #menuConteudo{ display:inline-block; margin: 0px 0 0 4px; list-style: none; }
+#menuConteudo > .linha > .esquerdo > a, #menuConteudo > .linha > .esquerdo > link { float:left; }
+#menuConteudo > .linha > .esquerdo, #menuConteudo > .linha > .direito { display: inline-block; width: 270px; }
+#menuConteudo > .linha > .direito > a, #menuConteudo > .linha > .direito > link { float:right; }
+#menuConteudo > .linha > .direito > .metade, #menuConteudo > .linha > .esquerdo > .metade { margin: 0 0 0 -10px; width: 140px; display: inline-block; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > li { color: #808080; float: left; font-size: 13px; font-weight: bold; margin: 5px 0; width: 550px;}
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linhaDivisoria { border-image: url("/images/captura2/line-h.png") 1 1 1 1 round round; border-top: 1px solid transparent; float: right; height: 1px; margin: 0 -7px 0 0; width: 550px; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha link { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -605px -2px transparent; display: inline-block; height: 17px; width: 16px; margin: -3px 5px 0 10px; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha #iconUsuario{ background-position: -605px -2px; float: left; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha #iconEmail{ background-position: -1528px -2px; float: right; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha #iconBaixar{ background-position:-1212px -2px; float: left; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha #iconPegou{ background-position: -315px -2px; float: left; }
+#corpo #esquerda #conteudo #blocoConteudo #menuConteudo > .linha #iconNaoPegou{ background-position: -909px -2px; float: left; }
+#corpo #esquerda #conteudo #linhaSuperior{ margin: 4px -10px -14px 0; width: 550px; float: right; -webkit-border-image:url("/images/captura2/line-h.png") 1 1 round; -o-border-image:url("/images/captura2/line-h.png") 1 1  round; border-image:url("/images/captura2/line-h.png") 1 1  round; border-top: 1px solid transparent; }
+
+
+/* Conteudo da página inicial */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo { float: right; width: 500px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -2px -29px transparent; float: right; height: 52px; margin: 10px -21px 0; width: 52px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.novidade { background-position: -52px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.dica { background-position: -209px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.novasCapturadas { background-position: -365px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.revista { background-position: -105px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.evento { background-position: -313px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.editar { background-position: -313px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.captura { background-position: -469px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.capturadores { background-position: -469px -154px }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.capturadas { background-position: -574px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.sugestao { background-position: -521px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.reuniao { background-position: -104px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.maisCurtidas { background-position: -157px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.modificarSenha { background-position: -1px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.batalha { background-position: -417px -154px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.video { background-position: -210px -29px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote  > .titulo { border-bottom: 1px solid transparent; border-image: url("/images/captura2/line-h.png") 1 1 1 1 round round; color: #3B95E0; float: right; font-family: asf; font-size: 16px; font-weight: 300; margin: 11px 0 0; padding: 0 30px 0 0; position: relative; right: 41px; text-align: right; width: 480px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote  > .subtitulo { color: #808080; float: right; font-family: arial; font-size: 12px; font-weight: 300; margin: 3px 0 0; padding: 0 30px 0 0; position: relative; right: 41px; text-align: right; width: 480px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article { text-align: justify; min-height:40px;  justify; margin: 60px 0 0 0; float: left; width: 450px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #BFDDF5; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; color: #333333; float: right; margin: 20px 0 0 0; padding: 4px 6px; position: relative; width: 440px; height: 100px }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .captura:after,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .captura:before{ right: 133px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .menuComentario {  width: 180px; right; font-size: 14px; height: 14px; list-style: none outside none; margin: -28px 0 0 280px; position: absolute; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .menuComentario > li { color: #808080; float: left; font-weight: bold; margin: 0 6px; cursor: pointer; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box article { padding: 6px 6px 0px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura { display:none; color: #808080; font-size: 10px; background: #FFF5E0; height: 93%;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosFacebook { color: #808080; font-size: 10px; background: #E9F1F8; height: 93%;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosFacebook > span
+, #corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura > span{ margin: 10px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosFacebook > span > img,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura > span > img{ width: 50px; float:left; margin: 7px 0 0 4px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosFacebook > span > article,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura > span > article{ display: inline-block; float: left; margin: 10px 0 10px 10px; padding: 0; width: 350px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosFacebook > span > article > h2,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura > span > article > h2{ color: #3B95E0; display: inline-block; font-weight: bold; margin: 0; padding: 0; width: 82px; vertical-align: baseline; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .box > .comentariosCaptura > span > article > h2{ color: #F15A24; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > h3.paragrafoTitulo { font-size: 14px; margin: 10px 0; color: #7AC943; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > h3.paragrafoTitulo a,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > h3.paragrafoTitulo a:visited,
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > h3.paragrafoTitulo a:hover { color: #7AC943 !important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article p { font-size: 12px; color: #808080;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > div { border: none !important; margin: 2px 0; font-size: 12px; color: #808080;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article .bloco { margin: 10px 0 30px 0; display: block; text-align: justify; }
+
+/* visualizar capturada */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > bloquenote.visualizarCapturada { margin: 0; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo.visualizarCapturada {  float: right; margin: 10px -20px 0 0; width: 520px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article.visualizarCapturada { float: left;  margin: 70px 0 0 -233px;  min-height: 40px; text-align: justify; width: 680px; }
+
+
+/* parte referente as revista na linha principal */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article .download{ display: block; font-size: 10px;  margin: 20px 0 0; text-align: left; width: 100%;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article .download:hover{ background: none repeat scroll 0 0 #E6F8FF; }
+
+/* padrões de itens dentro do bloco conteudo.parteConteudo article */
+.conteudoDefault h1, .conteudoDefault h2, .conteudoDefault article h3, .conteudoDefault article h4, .conteudoDefault h5, 
+.conteudoDefault p, .conteudoDefault span, .conteudoDefault ul, .conteudoDefault ul li   { margin: 10px 0px 10px 0px; color: #808080; display: block; }
+.conteudoDefault ul.ladoalado span { display: inline-block; }
+.conteudoDefault ul li { margin: 10px 0px 10px 20px; list-style: disc;}
+
+
+/* Lista das capturadas de um capturador */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article .iconEmail{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1528px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }{}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article .iconTelefone{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1029px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }{}
+
+/* Lista de atas */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo #listaAtas > li{ cursor: pointer; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo #listaAtas > li:hover{ background: #E6F8FF; }
+
+/* Lista de videos */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo .video{ display: block; margin: 0px 0 10px 0px; width: 450px; }
+
+/* Tela de calendário */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > #calendario {float: left; margin: 30px 0px 0px -30px}
+
+/* Listagem de formulario lado a lado */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.ladoalado input[type="submit"] { cursor: pointer; float:left; clear: both; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.ladoalado { margin: 20px 0 10px 0; list-style: none; float:left; width: 500px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.ladoalado > li > input:not([type='submit']){ border: none; height:17px; background: url("/images/captura2/sprite-background.png") no-repeat scroll -505px -255px transparent; font-size: 10px; height: 18px; margin: 0 120px 0 1px; width: 172px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.ladoalado > li label{ width: 150px; float:left; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.ladoalado > li textarea{ width: 167px; float:left; margin-right: 120px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > bloquenote { background-color: #DDE3DD; background-repeat: no-repeat; border: 3px dashed; clear: both; color: #00529B; float: left; margin: 10px 0 20px; padding: 10px; width: 460px; }
+
+/* Listagem de botões */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.listaBotoes { float: left; list-style: none outside none; margin: 0; width: 500px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  ul.listaBotoes > li { display: inline-block; height: 20px; width: auto; }
+
+/* Listagem de usuários */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios { margin: 20px 0; list-style: none; margin 2px; float:left; width: 500px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li { width:500px;  margin: 4px; float:left; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li.hover:hover{ background: #E6F8FF; }
+
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li > p{ float:left; margin: 0 4px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li .iconTotalImagens {  background: url("/images/captura2/sprite-icons.png") no-repeat scroll -275px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li .iconReputacao {  background: url("/images/captura2/sprite-icons.png") no-repeat scroll -1112px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article  #listaUsuarios > li .iconReputacaoMensal {  background: url("/images/captura2/sprite-icons.png") no-repeat scroll -449px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+
+/* Listagem default no bloco de conteúdo */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  ul.default{ list-style: none; margin 2px; float:left;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  ul.default > li{ height: 20px; margin: 4px; float:left;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  ul.default > li > label{ float: left; margin: 4px 0 0 0; }
+
+/* Menu tela do usuario */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  #menuAcoes{ list-style: none; margin 2px; float:left;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  #menuAcoes > li{ height: 20px; margin: -10px 4px 10px 4px; float:left;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  .listaBatalhas{ list-style: none; margin 2px; float:left;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo  .listaBatalhas > li{ height: 20px; margin: -10px 4px 10px 4px; float:left;}
+
+/* Listagem de uma batalha na linha geral */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaImagemPrincipal{ text-align:center; float: left; width: 240px; margin: 0px 0 30px 0;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaImagemPrincipal img{ display: inline-block; width: 220; height: 150px; background-color: #ccc; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo{ float: left; width: 200px; font-size: 10px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo img { display: inline-block; margin: 0px 4px 6px 4px; width: 90px; height: 60px; background-color: #ccc; float: left; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo p { margin: 0 0 6px 0; min-height: 90px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo span[class^="icon"] { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -665px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo .iconLocal{ background-position: -1335px -2px!important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo .iconParticipacao{ background-position: -1028px -2px!important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo .iconCapturadas{ background-position: -275px -2px !important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoBatalha > .conteudoBatalhaInfo .iconData{ background-position: -1418px -2px !important; }
+
+
+
+/* Listagem de um evento na linha geral */
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoImagemPrincipal{ text-align:center; float: left; width: 240px; margin: 0px 0 30px 0;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoImagemPrincipal img{ display: inline-block; width: 220; height: 150px; background-color: #ccc; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo{ float: left; width: 200px; font-size: 10px; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo img { display: inline-block; margin: 0px 4px 6px 4px; width: 90px; height: 60px; background-color: #ccc; float: left; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo p { margin: 0 0 6px 0; min-height: 90px;}
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo span[class^="icon"] { background: url("/images/captura2/sprite-icons.png") no-repeat scroll -665px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo .iconLocal{ background-position: -1335px -2px!important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo .iconParticipantes{ background-position: -1275px -2px !important; }
+#corpo #esquerda #conteudo > #blocoConteudo > .parteConteudo > article > .conteudoEvento > .conteudoEventoInfo .iconData{ background-position: -1418px -2px !important; }
+
+/*Paginador do captura.me*/
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura {  display: inline-block; margin: 20px 0 0; text-align: center; }
+#corpo #esquerda #conteudo #blocoConteudo > .parteConteudo > article >  #divPaginadorCaptura {  display: inline-block; margin: 20px 0 0 -40px; text-align: center; }
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura > #paginadorCaptura { width: 560px; clear: both; display: block; text-align: center; font-size: 13px; }
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura > #paginadorCaptura li { text-align: center;  display: inline-block; margin: 0 8px; cursor: pointer; height: 20px; }
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura > #paginadorCaptura li a { text-align: center;  display: inline-block; }
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura > .linhaDivisoriaPaginador { height:1px; border-bottom: 1px solid #BEDCF4; display: block; margin: 10px; width: 550px;}
+#corpo #esquerda #conteudo #blocoConteudo  #divPaginadorCaptura > #paginadorCaptura > .selected{ border-bottom: 5px solid; color: #7AC943 !important; font-weight: bolder; padding: 0 4px; }
+
+#corpo #esquerda #conteudo #blocoConteudo span.linhaDivisoria { border-image: url("/images/captura2/line-h.png") 1 1 1 1 round round; border-top: 1px solid transparent; float: right; height: 1px; margin: 10px -70px 10px 0; width: 550px; }
+
+/*Listagem de capturadas*/
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > .listaCapturadas { float: left; font-size: 14px; height: 90px; list-style: none outside none; margin: 10px 0; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > .listaCapturadas  li { color: #808080; float: left; font-weight: bold; margin: 0 4px 0 25px; cursor: pointer; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > .listaCapturadas > .linhaDivisoria { border-image: url("/images/captura2/line-h.png") 1 1 1 1 round round; border-top: 1px solid transparent; float: right; height: 1px; margin: 14px 0px 0 -30px; width: 550px; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > #maisCapturadas{ background: url("/images/captura2/sprite-background.png") no-repeat scroll 45px -443px transparent; cursor: pointer; float: left; height: 20px; margin: 0 0 0 -29px; width: 586px; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens > #maisCapturadas:hover{ background-position: 45px -463px; }
+#corpo #esquerda #conteudo #blocoConteudo .listagemImagens li  img{ border: 2px solid #DDDDDD; padding: 5px 5px 14px; }
+
+/* caso do campo de dicas */
+#corpo #esquerda #conteudo #caixaEnviarDica textarea{ border: none; width: 100%; min-height: 24px; font-size: 12px; overflow: hidden; resize: none;}
+#caixaEnviarDica ,#caixaEnviarFoto, #caixaCriarEvento, .botoesCaixa{ display: none; }
+#caixaEnviarDica ,#caixaEnviarFoto, #caixaCriarEvento{ width: 546px; margin: 30px 0 0; z-index: 100; position: fixed; }
+#caixaCriarEvento #loadEvento{ margin: 0 10px 0 0;}
+#corpo #esquerda #conteudo .enviar, .enviar:active, .enviar:visited{ color: #808080; float: right; font-size: 12px; height: 10px; margin: 2px 0 0; text-decoration: none; width: 40px; }
+#corpo #esquerda #conteudo .botoesCaixa { border-image: url("/images/captura2/line-h.png") 1 1 1 1 round round; border-top: 1px solid transparent; float: right; margin: 0 -7px 0 0; padding: 0px 20px; text-align: right; width: 519px; height: 20px;}
+#corpo #esquerda #conteudo .botoesCaixa > span { float: right; height: 9px; padding: 2px 10px 2px 19px; text-align: center; width: auto; }
+#corpo #esquerda #conteudo .botoesCaixa > span:hover{ height: 16px; min-width: 40px; background: url("/images/captura2/sprite-background.png") no-repeat scroll 5px -376px transparent; font-weight: bold; }
+#corpo #esquerda #conteudo #caixaEnviarDica > #itensDica { float: left; list-style: none outside none; margin: 4px 0 6px; }
+#corpo #esquerda #conteudo #caixaEnviarDica > #itensDica li { float: left; margin: 0 18px; }
+#corpo #esquerda #conteudo #caixaEnviarDica > #itensDica > li > #tituloDica{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -504px -255px transparent; border: medium none; font-size: 12px; height: 18px; margin: 0 -19px 0 10px; padding: 0 4px; width: 165px; }
+
+
+
+
+.triangle-border.top:before { border-width: 0 7px 7px; bottom: auto; left: auto; right: 47px; top: -8px; }
+.triangle-border.top:after {border-width: 0 7px 7px; bottom: auto; left: auto; right: 47px; top: -6px; border-style: inset; }
+.triangle-border:before { border-color: #BFDDF5 #fff; border-style: solid; border-width: 7px 7px 0; bottom: -8px; content: ""; display: block; left: 45px; position: absolute; width: 0; }
+.triangle-border:after { border-color: #FFFFFF transparent; border-style: solid; border-width: 7px 7px 0; bottom: -6px; content: ""; display: block; left: 45px; position: absolute; width: 0; }
+.triangle-border { float: right; width: 530px; background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #BFDDF5; -webkit-border-radius: 10px 10px 10px 10px; -moz-border-radius: 10px 10px 10px 10px; border-radius: 10px 10px 10px 10px; color: #333333; margin: 10px 6px 0 0; padding: 4px 6px; position: relative; }
+
+/* caso do campo de enviar foto */
+#corpo #esquerda #conteudo #caixaEnviarFoto:after, #corpo #esquerda #conteudo #caixaEnviarFoto.top:before{ right: 175px;}
+#corpo #esquerda #conteudo #caixaEnviarFoto #botoesEnviarFoto { list-style: none;}
+#corpo #esquerda #conteudo #caixaEnviarFoto #botoesEnviarFoto li { float: left; margin: 0 17px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto #botoesEnviarFoto > li > #maisTags{  background: url("/images/captura2/sprite-background.png") no-repeat scroll -506px -134px transparent; border: medium none; font-size: 12px; height: 17px; margin: 0 -19px 0 23px; padding: 0 7px; width: 115px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto #botoesEnviarFoto #selecioneFotos{ cursor: pointer; }
+
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem{ position: relative; z-index: 1; height: 70px; background: url("/images/captura2/sprite-background.png") no-repeat scroll 0 -134px transparent; display: inline-block; margin: 10px 0 10px 13px; padding: 5px 0 5px 5px; width: 500px; font-size: 14px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem .blocoImagemEsquerdo{ float: left; width: 100px; margin: 0 0 0 0px; }
+
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem .blocoImagemDireito{ float: right;  width: 370px;}
+
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem .titulo{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -134px transparent; font-size: 10px; height: 17px; margin: 0px 18px 0 29px; width: 91px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem .tags{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -134px transparent; font-size: 10px; height: 17px; margin: 0 0 0 19px; width: 100px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem .descricao{ padding: 2px 0 0 0; background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -151px transparent; font-size: 10px; height: 31px; margin: 0; width: 254px; }
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem input{ border:none; }
+#corpo #esquerda #conteudo #caixaEnviarFoto .blocoImagem textarea{ border:none; resize: none; }
+
+/* caso do campo de enviar evento */
+#corpo #esquerda #conteudo #caixaCriarEvento:after, #corpo #esquerda #conteudo #caixaCriarEvento:before { right: 335px;}
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento{ background: url("/images/captura2/sprite-background.png") no-repeat scroll 6px -144px transparent; display: inline-block; height: 50px; margin: 10px 0 10px 13px; padding: 5px 0 5px 5px; width: 508px;}
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento .evento{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -235px transparent; font-size: 10px; height: 18px; margin: 0 14px; width: 138px; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento .contato{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -235px transparent; font-size: 10px; height: 18px; margin: 0 14px 0 8px; width: 138px; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento .local{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -507px -255px transparent; font-size: 10px; height: 18px; margin: 0 0 0 2px; width: 168px; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento .data{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -506px -235px transparent; font-size: 10px; height: 18px; margin: 0 11px 0 7px; width: 58px; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento .hora{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -506px -235px transparent; font-size: 10px; height: 18px; margin: 0 1px 0 6px; width: 50px; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento input{ border:none; }
+#corpo #esquerda #conteudo #caixaCriarEvento .blocoEvento span{ width: 470px; float: left; margin: 3px 0 0 20px; height: 20px; }
+
+
+#corpo #esquerda #painel{ width: 750px; float: left; -webkit-border-image:url("/images/captura2/line.png") 1 1 round; -o-border-image:url("/images/captura2/line.png") 1 1  round; border-image:url("/images/captura2/line.png") 1 1  round; border-left: 1px solid transparent;  display: inline-block; }
+#corpo #esquerda #painel nav{ background: none #fff; z-index: 100; position: fixed; border-bottom: 1px solid #bedcf4; border-right: 1px solid #bedcf4; display: inline-block; width: 755px; }
+
+#corpo #esquerda #painel nav ul{ margin: 10px 0px 0 10px; list-style: none; }
+#corpo #esquerda #painel nav ul li{ float:left; margin: 0 3px; }
+#corpo #esquerda #painel nav ul li a{ width: 54px; height: 54px; background: url("/images/captura2/sprite-icons.png") no-repeat scroll -308px  -29px transparent ; display: inline-block;  }
+#corpo #esquerda #painel nav #separadorListaCapturadas{ display: inline-block; -webkit-border-image:url("/images/captura2/line.png") 1 1 round; -o-border-image:url("/images/captura2/line.png") 1 1  round; border-image:url("/images/captura2/line.png") 1 1  round; border-right: 1px solid transparent; float: left; height: 75px; margin: -10px 0 0 5px; }
+#corpo #esquerda #painel nav #empilharFoto{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -55px -29px transparent ; display: inline-block; height: 52px; margin: 0px 0 0 12px; width: 51px; }
+#corpo #esquerda #painel div#divisaoEsquerda{ margin: 76px 0 0; width: 755px; display: inline-block; border-right: 1px solid #bedcf4; }
+#corpo #esquerda #painel div#divisaoEsquerda > aside{ position: fixed;  width: 195px; display: inline-block; min-height: 500px }
+#corpo #esquerda #painel div#divisaoEsquerda > section{ float: right;  width: 560px; display: inline-block; min-height: 500px}
+
+#corpo #direita { position: fixed; float: left; display: inline-block; margin: 0 0 0 0px; width: 200px; font-size: 12px;}
+#corpo #direita nav #resultadoPesquisa{ float: left; height: 100%; margin: 0 0 0 4px; width: 180px; }
+#corpo #direita nav #resultadoPesquisa > li { cursor: pointer;}
+
+
+#corpo #direita #menuBusca { float:right; margin: 10px 0px 0 4px; list-style: none;  }
+#corpo #direita #menuBusca li { cursor: pointer; float:right; margin: 0 4px; }
+#corpo #direita #menuBusca li:hover { color: #297ECC; }
+
+#corpo #direita #menuBusca #separadorMenuBusca{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -197px -276px transparent; float: right; height: 7px; width: 190px; }
+#corpo #direita #menuBusca #separadorMenuBusca.filtroTag{ background-position: -196px -286px !important; }
+#corpo #direita #menuBusca #separadorMenuBusca.filtroEvento{ background-position: -198px -295px  !important; }
+#corpo #direita #iconEventos{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -665px -2px transparent; width: 19px; height: 19px; display: inline-block; margin: 0 2px 0 0; }
+#corpo #direita #iconTags{ background: url("/images/captura2/sprite-icons.png") no-repeat scroll -375px -2px transparent; width: 16px; height: 19px; display: inline-block; margin: 0 2px; }
+
+#corpo #direita #resultadoPesquisa { float:right; margin: -2px 0px 0px; list-style: none;   }
+
+#corpo #direita #resultadoPesquisa li { float:right; height: 84px; margin: 10px 4px; }
+#corpo #direita #resultadoPesquisa.filtroTags li { color:#F15A24; background: url("/images/captura2/sprite-background.png") no-repeat scroll -3px -278px transparent; }
+#corpo #direita #resultadoPesquisa.filtroEventos li { color:#619934; background: url("/images/captura2/sprite-background.png") no-repeat scroll -400px -278px transparent; }
+
+
+#corpo #direita #resultadoPesquisa .linhaResultado { font-weight: bold; float: right; margin: 4px 10px 0 0; text-align: right; width: 150px; }
+#corpo #direita #resultadoPesquisa .imagensLinhaResultado { margin: 0px 0px 0px 4px; float: left; width: 170px; }
+#corpo #direita #resultadoPesquisa .imagensLinhaResultado img { height: 50px; margin: 10px 4px 0 0; width: 50px; }
+#corpo #direita #resultadoPesquisa .separadorResultadoPesquisa{ background: url("/images/captura2/sprite-background.png") no-repeat scroll -186px -275px transparent; float: left; height: 10px; margin: 14px -17px 0; width: 200px; }
+
+
+
+/* jquery ui tooltip */
+.ui-tooltip { -webkit-border-radius: 10px !important; -moz-border-radius: 10px !important; border-radius: 10px !important; border: 1px solid #eee !important; }
+/*
+.ui-tooltip, .arrow:after { background: none repeat scroll 0 0 #ddd; }
+.ui-tooltip { border-radius: 10px; color: #222; font: bold 14px "Helvetica Neue",Sans-Serif; padding: 5px 10px; text-transform: uppercase; font-size: 10px; }
+.arrow { bottom: -16px; height: 18px; left: 50%; margin-left: -35px; overflow: hidden; position: absolute; width: 70px; }
+.arrow.top { bottom: auto; top: -17px; }
+.arrow.left { left: 20%; }
+.arrow:after { content: ""; height: 25px; left: 20px; position: absolute; top: -20px; transform: rotate(45deg); width: 25px; }
+.arrow.top:after { bottom: -20px; top: auto; }
+*/
+
+/* jquery ui dialog */
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{	border: none; }
+.ui-widget-header { background: none repeat fixed 60% 40% #FFFFFF; border: medium none; color: #777777; height: 30px;  margin: -6px -6px -10px -4px; }
+.ui-dialog .ui-dialog-buttonpane{ margin: 0px; padding: 0px 10px 0px 0px;}
+.ui-widget-content{ background: url("/js/plugins/jqueryui/images/ui-bg_flat_90_ffffff_40x100.png") repeat scroll 40% 40% #DDDDDD; border: none; border-radius: 0px; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background: none repeat scroll 0 0 transparent; border: 1px solid #CCCCCC; color: #666666; font-weight: normal; }
+.ui-dialog .ui-dialog-buttonpane button { cursor: pointer; margin: 4px; }
+.ui-widget-header .ui-icon { background-color: #DDDDDD; background-image: url("/js/plugins/jqueryui/images/ui-icons_ffffff_256x240.png"); -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+.ui-dialog-buttonpane{ margin: 0px -3px 12px -10px !important;}
+.ui-dialog .ui-dialog-title { float: left; margin: 5px 0 0 0px; }
+#dialog{ margin: 6px 0 0 0 ; min-height: 80px; }
+
+
+/* regra do upload fotos */
+.uploadArea{ max-height: 290px; min-height: 100px; overflow: auto; padding: 0;}

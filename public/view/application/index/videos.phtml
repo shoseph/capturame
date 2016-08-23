@@ -1,0 +1,20 @@
+<?php $this->tituloHelper()->setTitulo('Videos Captura.Me'); ?>
+<?php foreach($this->videos as $indice => $video ):  ?>
+<div class="parteConteudo">
+    <bloquenote class="evento">
+        <h2 class="titulo"><?php echo $video->titulo; ?></h2>
+    </bloquenote>
+    <article>
+    <p class="video"><object width="450" height="253.125" >
+        <param name="movie" value="<?php echo $video->youtube; ?>"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowScriptAccess" value="always"></param>
+        <embed src="<?php echo $video->youtube; ?>" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="450" height="253.125"></embed>
+    </object></p>
+    
+    <p><?php echo $video->descricao; ?></p>
+    
+        
+   </article>
+</div>
+<?php endforeach; ?>

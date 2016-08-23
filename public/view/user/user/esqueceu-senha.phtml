@@ -1,0 +1,25 @@
+<?php $this->tituloHelper()->setTitulo('Esqueceu sua senha?'); ?>
+
+<div class="parteConteudo">
+    <bloquenote class="evento">
+        <h2 class="titulo">Envio de nova senha</h2>
+        <h2 class="subtitulo">Informe seu email para resetar sua senha</h2>
+    </bloquenote>
+    
+    <article>
+        <?php $form = $this->form;  $form->setAttribute('action', $this->url('esqueceu-senha')); $form->prepare(); ?>
+        <?php if($form->getMessages()): ?>
+        <bloquenote>
+            <?php foreach($form->getMessages() as $i => $element): ?>
+                <p><?php echo "Erro: [" . $this->formLabel($form->get($i)) . '] ' .  implode(', ', $form->get($i)->getMessages()); ?></p>
+            <?php endforeach; ?>
+        </bloquenote>
+        <?php endif;?>
+        <?php echo $this->form()->openTag($form); ?>
+        <ul class="ladoalado">
+            <li><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formElement($form->get('email')); ?></li>
+            <li><?php echo $this->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>  
+</div>

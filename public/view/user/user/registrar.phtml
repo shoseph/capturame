@@ -1,0 +1,30 @@
+<?php $this->tituloHelper()->setTitulo('Novo capturador'); ?>
+<div class='parteConteudo'>
+    <bloquenote class="menu">
+        <h2 class='titulo'>Novo Capturador</h2>
+        <h2 class='subtitulo'>Criando um novo usuário no Captura.Me</h2>
+    </bloquenote>
+    <article>
+        <?php echo $this->facebookDadosHelper()->setForm($this->form)->facebookData()->html(); ?>
+        <?php $form = $this->form;  $form->setAttribute('action', $this->url('registrar')); $form->prepare(); ?>
+        <?php if($form->getMessages()): ?>
+        <bloquenote>
+            <?php foreach($form->getMessages() as $i => $element): ?>
+                <p><?php echo "Erro: [" . $this->formLabel($form->get($i)) . '] ' .  implode(', ', $form->get($i)->getMessages()); ?></p>
+            <?php endforeach; ?>
+        </bloquenote>
+        <?php endif;?>
+        <?php echo $this->form()->openTag($form); ?>
+        <?php echo $this->formElement($form->get('id_facebook')); ?>
+        <ul class="ladoalado">
+            <li><?php echo $this->formLabel($form->get('nome')); ?><?php echo $this->formElement($form->get('nome')); ?></li>
+            <li><?php echo $this->formLabel($form->get('login')); ?><?php echo $this->formElement($form->get('login')); ?></li>
+            <li><?php echo $this->formLabel($form->get('senha')); ?><?php echo $this->formElement($form->get('senha')); ?></li>
+            <li><?php echo $this->formLabel($form->get('verifysenha')); ?><?php echo $this->formElement($form->get('verifysenha')); ?></li>
+            <li><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formElement($form->get('email')); ?></li>
+            <li><?php echo $this->formLabel($form->get('cpf')); ?><?php echo $this->formElement($form->get('cpf')); ?></li>
+            <li><?php echo $this->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>  
+</div>

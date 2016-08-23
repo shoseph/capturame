@@ -1,0 +1,60 @@
+<?php $this->headScript()->prependFile('/js/application/index/bloco-noticias.js'); ?>
+<?php if($_SERVER['REQUEST_URI']  == '/'): ?>
+<div class="blocos blocosNoticias">
+    <div class="blocoEsquerdo">
+        <h2 class="iconFogo vermelho">Novidades</h2>
+        <?php if($this->novidade){ ?>
+            <h2 class="iconCurtirConteudo"><input type="hidden" class="conteudo" value="<?php echo $this->novidade->id_conteudo; ?>" /><a class="curtirConteudo">&nbsp;</a></h2>
+            <h2 class="iconQuantidade"><?php echo $this->novidade->curtir; ?></h2>
+            <div class="tamanhoBlocosNoticias overflowMouseUp">
+                <h2 class="blocoTitulo"><?php echo ucfirst($this->novidade->titulo); ?></h2>
+                <?php echo $this->novidade->getResumo(); ?>
+            </div>
+        <?php } else {?>
+            <h2 class="iconQuantidade">0</h2>
+            <div class="tamanhoBlocosNoticias">
+                <h2 class="blocoTitulo">Aguardando uma nova Novidade...</h2>
+            </div>
+        <?php } ?>
+        <div class="leiaMais"><a href="/novidades" class="laranjaHover">Leia</a><h2 class="iconLeiaMais">&nbsp;</h2></div>
+    </div>
+    <div class="blocoCentro">
+        <h2 class="iconLapis azul">Artigos</h2>
+        <h2 class="iconCurtirConteudo">&nbsp;</h2>
+        <?php if($this->artigo){ ?>
+            <h2 class="iconQuantidade"><?php echo $this->artigo->curtir; ?></h2>
+            <div class="tamanhoBlocosNoticias overflowMouseUp">
+                <h2 class="blocoTitulo"><?php echo ucfirst($this->artigo->titulo); ?></h2>
+                <?php echo $this->artigo->getResumo(); ?>
+            </div>
+        <?php } else {?>
+            <h2 class="iconQuantidade">0</h2>
+            <div class="tamanhoBlocosNoticias">
+                <h2 class="blocoTitulo">Aguardando um novo Artigo...</h2>
+            </div>
+        <?php } ?>
+        <div class="leiaMais"><a href="/novidades" class="laranjaHover">Leia</a><h2 class="iconLeiaMais">&nbsp;</h2></div>
+    </div>
+
+    <div class="blocoDireita" >
+        <h2 class="iconEstrela verdeClaro">Dicas</h2>
+        <h2 class="iconCurtirConteudo">&nbsp;</h2>
+        <?php if($this->dica){ ?>
+            <h2 class="iconQuantidade"><?php echo $this->dica->curtir; ?></h2>
+            <div class="tamanhoBlocosNoticias overflowMouseUp">
+                <h2 class="blocoTitulo"><?php echo ucfirst($this->dica->titulo); ?></h2>
+                <?php echo $this->dica->getResumo(); ?>
+            </div>
+        <?php } else {?>
+            <h2 class="iconQuantidade">0</h2>
+            <div class="tamanhoBlocosNoticias">
+                <h2 class="blocoTitulo">Aguardando uma nova Dica...</h2>
+            </div>
+        <?php } ?>
+        <div class="leiaMais"><a href="/novidades" class="laranjaHover">Leia</a><h2 class="iconLeiaMais">&nbsp;</h2></div>
+        
+    </div>
+</div>
+<br class="clear">
+<span class="clearPontilhado">&nbsp;</span>
+<?php endif; ?>

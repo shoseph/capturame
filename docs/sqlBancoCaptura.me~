@@ -1,0 +1,571 @@
+-- D ROP SCHEMA IF EXISTS `bancocaptura` ;
+-- C REATE SCHEMA IF NOT EXISTS `bancocaptura` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+-- U SE `bancocaptura` ;
+
+-- phpMyAdmin SQL Dump
+-- version 3.3.10.4
+-- http://www.phpmyadmin.net
+--
+-- Servidor: banco.captura.me
+-- Tempo de Geração: Abr 16, 2013 as 05:52 AM
+-- Versão do Servidor: 5.1.53
+-- Versão do PHP: 5.3.13
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Banco de Dados: `bancocaptura`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_apoio`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_apoio` (
+  `id_apoio` int(11) NOT NULL AUTO_INCREMENT,
+  `empresa` varchar(80) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `apoio` varchar(200) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_apoio`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `cp_apoio`
+--
+
+INSERT INTO `cp_apoio` (`id_apoio`, `empresa`, `email`, `apoio`, `data`) VALUES
+(1, 'testando um apoio fake', 'rafael@fake.com', 'fake mesmo esse apoio', '2013-03-07 20:36:29');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_batalha`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_batalha` (
+  `id_batalha` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) DEFAULT NULL,
+  `descricao` varchar(200) DEFAULT NULL,
+  `dtInicio` datetime DEFAULT NULL,
+  `dtFim` datetime DEFAULT NULL,
+  `aberta` tinyint(1) NOT NULL DEFAULT '1',
+  `quantidade` int(4) NOT NULL DEFAULT '4',
+  PRIMARY KEY (`id_batalha`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `cp_batalha`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_batalha_capturada`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_batalha_capturada` (
+  `id_batalha_capturada` int(11) NOT NULL AUTO_INCREMENT,
+  `id_capturada` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_batalha` int(11) NOT NULL,
+  `id_capturada_anterior` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_batalha_capturada`),
+  UNIQUE KEY `id_capturada_UNIQUE` (`id_capturada`),
+  KEY `fk_batalha_capturada_id_capturada` (`id_capturada`),
+  KEY `fk_batalha_capturada_id_usuario` (`id_usuario`),
+  KEY `fk_batalha_capturada_id_batalha` (`id_batalha`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+
+--
+-- Extraindo dados da tabela `cp_batalha_capturada`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_batalha_ponto`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_batalha_ponto` (
+  `id_batalha_ponto` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario_acao` int(11) NOT NULL DEFAULT '-1',
+  `id_batalha_capturada` int(11) NOT NULL,
+  `pegou` int(4) DEFAULT NULL,
+  `naoPegou` int(4) DEFAULT NULL,
+  `baixou` int(4) DEFAULT NULL,
+  `dtCadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_batalha_ponto`),
+  KEY `fk_batalha_ponto_id_batalha_capturada` (`id_batalha_capturada`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=161 ;
+
+--
+-- Extraindo dados da tabela `cp_batalha_ponto`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_capturada`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_capturada` (
+  `id_capturada` int(11) NOT NULL AUTO_INCREMENT,
+  `aprovada` tinyint(1) NOT NULL DEFAULT '0',
+  `hash` varchar(100) NOT NULL,
+  `caminho` varchar(150) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `descricao` varchar(400) DEFAULT NULL,
+  `dtImagem` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `pegou` bigint(20) DEFAULT '0',
+  PRIMARY KEY (`id_capturada`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1758 ;
+
+--
+-- Extraindo dados da tabela `cp_capturada`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_capturada_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_capturada_tag` (
+  `id_capturada_tag` int(11) NOT NULL AUTO_INCREMENT,
+  `id_capturada` int(11) NOT NULL,
+  `id_tag` int(11) NOT NULL,
+  PRIMARY KEY (`id_capturada_tag`),
+  KEY `fk_cp_capturada_tag_cp_tag1` (`id_tag`),
+  KEY `fk_cp_capturada_tag_cp_capturada1` (`id_capturada`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=620 ;
+
+--
+-- Extraindo dados da tabela `cp_capturada_tag`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_conteudo`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_conteudo` (
+  `id_conteudo` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `titulo` varchar(45) NOT NULL,
+  `conteudo` varchar(1500) NOT NULL,
+  `curtir` int(11) NOT NULL DEFAULT '0',
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_conteudo`),
+  KEY `fk_cp_conteudo_cp_tipo_conteudo1` (`id_tipo`),
+  KEY `fk_cp_conteudo_cp_usuario1` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Extraindo dados da tabela `cp_conteudo`
+--
+
+INSERT INTO `cp_conteudo` (`id_conteudo`, `id_tipo`, `id_usuario`, `titulo`, `conteudo`, `curtir`, `data`) VALUES
+(4, 1, 0, 'Novas funcionalidades no Captura.Me', '<p>Novidade bacana no Captura.Me!</p>\r\n\r\n<p>Agora temos a op&ccedil;&atilde;o de enviar nossas <strong>dicas</strong> e todas elas s&atilde;o avisada via <strong>facebook</strong> para toda comunidade do Captura.Me!</p>\r\n\r\n<p>Entre e confira as novas funcionalidades do Captura.Me!</p>', 0, '2013-03-04 21:21:16'),
+(5, 1, 0, 'Integração com o Facebook', '<h2>Ol&aacute; Capturadores!</h2>\r\n\r\n<p>Testamos bastante a nova funcionalidade de comentar utilizando a ferramenta do facebook, conseguimos instalar o facebook ainda mais no site do Captura.Me e est&aacute; no ar essa nova modifica&ccedil;&atilde;o.</p>\r\n\r\n<p>Voc&ecirc; consegue receber notifica&ccedil;&otilde;es de pessoas que comentaram no site da imagem que voc&ecirc; j&aacute; comentou, &eacute; poss&iacute;vel usu&aacute;rios do <strong>Facebook</strong>, <strong>Yahoo</strong>, <strong>AOL</strong> e <strong>Hotmail</strong>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ent&atilde;o testem a vontade! comentem, opinem, critique, fa&ccedil;a a coisa acontecer na base de um coment&aacute;rio sadio!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Tenham um &oacute;timo dia!</p>\r\n\r\n<p>&nbsp;</p>', 0, '2013-03-21 08:38:48'),
+(6, 1, 0, 'Funcionalidades novas!', '<h2>Ol&aacute; Capturadores!</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Estamos agora enviando a nova modifica&ccedil;&atilde;o que cont&eacute;m as duas novas funcionalidades, login utilizando o email, redefini&ccedil;&atilde;o de senha e modifica&ccedil;&atilde;o de senha.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Testem a vontade e qualquer coisa reportem no email@captura.me</p>', 0, '2013-03-21 08:45:29'),
+(7, 1, 0, 'Boa tarde Capturadores!', '<p>Agora no momento que escrevo, estamos atualizando todo o site do Captura.Me, temos algumas novidades interessantes onde se destacam:</p>\r\n\r\n<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">1 - Corre&ccedil;&atilde;o dos bugs de envio de fotos</div>\r\n\r\n<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">2 - Pre-visualiza&ccedil;&atilde;o das imagens selecionadas para envio</div>\r\n\r\n<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">3 - Envio de 1 imagem por vez</div>\r\n\r\n<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">4 - Corre&ccedil;&otilde;es de layout</div>\r\n\r\n<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">5 - Melhoria na integra&ccedil;&atilde;o com o Facebook</div>\r\n\r\n<p>Essas e muitas outras n&atilde;o em destaque s&oacute; para facilitar a sua aventura no Captura.Me!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Estamos esperando novas fotos!</p>', 0, '2013-04-11 12:45:08'),
+(8, 2, 1, 'Fotos na praia', '<p>Pense bem nas roupas do modelo!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Em fotografias na praia, opte por cores que n&atilde;o absorvam tanto o azul do ceu, algumas fotos podem ser complicadas escolherndo branco, cores claras ou azul, porqu&ecirc;?</p>\r\n\r\n<blockquote>\r\n<p>Ganho no azul do c&eacute;u pode ser uma medida interessante de melhorar a composi&ccedil;&atilde;o de uma imagem, mas ao fazer tal ato &eacute; poss&iacute;vel pecar em outras partes da fotografia.</p>\r\n\r\n<p>Um bom exemplo &eacute; a roupa do modelo, se o mesmo estiver com uma cor que absorve o azul, modificar o azul para melhorar a cor do c&eacute;u&nbsp; pode gerar um efeito desagrad&aacute;vel na roupa do modelo, o mesmo acontece em cores azuladas, pois as mesmas tem chance de estragar uma imagem.</p>\r\n</blockquote>\r\n\r\n<p>Com isso em mente, sempre pense quais as cores que uma modelo pode utilizar em um ens&aacute;rio fotogr&aacute;fico!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Boas imagens!</p>', 0, '2013-04-12 07:18:22');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_rank`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_rank` (
+  `id_rank` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `rk_fotos` int(11) DEFAULT NULL,
+  `rk_batalhas` int(11) DEFAULT NULL,
+  `rk_site` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_rank`),
+  KEY `fk_cp_rank_id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Extraindo dados da tabela `cp_rank`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_tag` (
+  `id_tag` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) NOT NULL,
+  `dt_tag` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `evento` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_tag`),
+  UNIQUE KEY `nome_UNIQUE` (`nome`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+
+--
+-- Extraindo dados da tabela `cp_tag`
+--
+
+INSERT INTO `cp_tag` (`id_tag`, `nome`, `dt_tag`, `evento`) VALUES
+(1, 'auto da compadecida', '2013-02-15 08:54:48', 1),
+(2, 'praia', '2013-02-15 08:54:48', NULL),
+(3, 'arquitetura', '2013-02-15 08:54:48', NULL),
+(4, 'história', '2013-02-15 08:54:48', NULL),
+(5, 'Natal', '2013-02-15 08:54:48', NULL),
+(6, 'Inverno', '2013-02-15 08:54:48', NULL),
+(7, 'Neve', '2013-02-15 08:54:48', NULL),
+(8, 'gelo', '2013-02-15 08:54:48', NULL),
+(9, 'paisagem', '2013-02-15 08:54:48', NULL),
+(10, 'Bruxelles', '2013-02-15 08:54:48', NULL),
+(11, 'baile cafuçu', '2013-03-02 09:04:52', 1),
+(13, 'grito rock', '2013-03-02 09:24:08', 1),
+(14, 'grito', '2013-03-02 09:48:00', NULL),
+(15, 'hazamat', '2013-03-02 09:54:24', 1),
+(16, 'aguaceira', '2013-03-20 12:25:08', 1),
+(17, 'kiko loureiro', '2013-04-01 09:44:51', 1),
+(18, 'stevie wonder', '2013-04-01 09:51:11', NULL),
+(19, 'gustavo queiroga', '2013-04-01 11:07:57', 1),
+(20, 'frédéric pelassy', '2013-04-12 11:49:15', 1),
+(21, 'violinista', '2013-04-12 11:49:15', NULL),
+(22, 'versatilidade', '2013-04-15 08:00:16', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_tipo_conteudo`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_tipo_conteudo` (
+  `id_tipo_conteudo` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_conteudo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `cp_tipo_conteudo`
+--
+
+INSERT INTO `cp_tipo_conteudo` (`id_tipo_conteudo`, `tipo`) VALUES
+(1, 'novidade'),
+(2, 'dica'),
+(3, 'artigo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_usuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(80) NOT NULL,
+  `login` varchar(40) NOT NULL,
+  `senha` varchar(80) NOT NULL,
+  `cpf` varchar(11) DEFAULT NULL,
+  `email` varchar(80) NOT NULL,
+  `ativo` tinyint(1) DEFAULT NULL,
+  `tipo` varchar(30) NOT NULL DEFAULT 'usuario',
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
+
+--
+-- Extraindo dados da tabela `cp_usuario`
+--
+
+INSERT INTO `cp_usuario` (`id_usuario`, `nome`, `login`, `senha`, `cpf`, `email`, `ativo`, `tipo`, `pontos`) VALUES
+(0, 'root', 'root', '27ad93521cf16e8734a11f9e20edf494', NULL, 'root@captura.me', 1, 'root', NULL),
+(1, 'rafael mendes barbosa', 'rafael.mendes', '42035f4a7e2794edcdb68da3444bab14', '07228983475', 'joserafaelmb@gmail.com', 1, 'usuario', 46895);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cp_usuario_capturada`
+--
+
+CREATE TABLE IF NOT EXISTS `cp_usuario_capturada` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_capturada` int(11) NOT NULL,
+  `gostou` tinyint(1) DEFAULT NULL,
+  `ficou` tinyint(1) DEFAULT NULL,
+  `id_capturada_anterior` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`,`id_capturada`),
+  KEY `fk_cp_usuario_captura_id_usuario` (`id_usuario`),
+  KEY `fk_cp_usuario_captura_id_capturada` (`id_capturada`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+
+--
+-- Extraindo dados da tabela `cp_usuario_capturada`
+--
+
+--
+-- Restrições para as tabelas dumpadas
+--
+
+--
+-- Restrições para a tabela `cp_batalha_capturada`
+--
+ALTER TABLE `cp_batalha_capturada`
+  ADD CONSTRAINT `fk_batalha_capturada_id_batalha` FOREIGN KEY (`id_batalha`) REFERENCES `cp_batalha` (`id_batalha`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_batalha_capturada_id_capturada` FOREIGN KEY (`id_capturada`) REFERENCES `cp_capturada` (`id_capturada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_batalha_capturada_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `cp_usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `cp_batalha_ponto`
+--
+ALTER TABLE `cp_batalha_ponto`
+  ADD CONSTRAINT `fk_batalha_ponto_id_batalha_capturada` FOREIGN KEY (`id_batalha_capturada`) REFERENCES `cp_batalha_capturada` (`id_batalha_capturada`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `cp_capturada_tag`
+--
+ALTER TABLE `cp_capturada_tag`
+  ADD CONSTRAINT `fk_cp_capturada_tag_cp_capturada1` FOREIGN KEY (`id_capturada`) REFERENCES `cp_capturada` (`id_capturada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_cp_capturada_tag_cp_tag1` FOREIGN KEY (`id_tag`) REFERENCES `cp_tag` (`id_tag`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `cp_conteudo`
+--
+ALTER TABLE `cp_conteudo`
+  ADD CONSTRAINT `fk_cp_conteudo_cp_tipo_conteudo1` FOREIGN KEY (`id_tipo`) REFERENCES `cp_tipo_conteudo` (`id_tipo_conteudo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_cp_conteudo_cp_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `cp_usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `cp_rank`
+--
+ALTER TABLE `cp_rank`
+  ADD CONSTRAINT `fk_cp_rank_id_user` FOREIGN KEY (`id_user`) REFERENCES `cp_usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `cp_usuario_capturada`
+--
+ALTER TABLE `cp_usuario_capturada`
+  ADD CONSTRAINT `fk_cp_usuario_captura_id_capturada` FOREIGN KEY (`id_capturada`) REFERENCES `cp_capturada` (`id_capturada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_cp_usuario_captura_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `cp_usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_acao`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_acao` (
+  `id_acao` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NOT NULL,
+  `ponto_permanente` INT NULL ,
+  `ponto_mensal` INT NOT NULL DEFAULT 10 ,
+  PRIMARY KEY (`id_acao`) )
+ENGINE = InnoDB;
+
+INSERT INTO cp_acao (nome, ponto_permanente, ponto_mensal) VALUES
+('adicionar bonus', 0, 0),
+('curtir imagem', 0, 10),
+('enviar capturada', 1, 20),
+('escolher batalha', 1, 10),
+('enviar dica', 2, 20),
+('enviar artigo', 2, 20),
+('informar evento', 5, 50),
+('reunião', 10, 100),
+('avaliar com estrela', 0, 10),
+('compartilhar vídeo', 3, 30),
+('saída fotografica', 20, 200);
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_classificacao`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_classificacao` (
+  `id_classificacao` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NOT NULL,
+  `pontos` INT NOT NULL DEFAULT 0 ,
+  `multiplicador` INT NOT NULL DEFAULT 1 ,
+  PRIMARY KEY (`id_classificacao`) )
+ENGINE = InnoDB;
+
+INSERT INTO cp_classificacao (nome, pontos, multiplicador) VALUES
+('sonolento', 500, 1),
+('bronze', 1000, 2),
+('prata', 2500, 3),
+('ouro', 4000, 4),
+('rei', 4001, 5);
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_acao_usuario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_acao_usuario` (
+  `id_acao_usuario` INT NOT NULL AUTO_INCREMENT ,
+  `id_usuario` INT NOT NULL ,
+  `id_acao` INT NOT NULL ,
+  `id_classificacao` INT NOT NULL ,
+  `ano` INT NULL ,
+  `mes` INT NULL ,
+  PRIMARY KEY (`id_acao_usuario`) ,
+  INDEX `fk_cp_acao_usuario_cp_usuario1` (`id_usuario` ASC) ,
+  INDEX `fk_cp_acao_usuario_cp_acao1` (`id_acao` ASC) ,
+  INDEX `fk_cp_acao_usuario_cp_classificacao1` (`id_classificacao` ASC) ,
+  CONSTRAINT `fk_cp_acao_usuario_cp_usuario1`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `bancocaptura`.`cp_usuario` (`id_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_acao_usuario_cp_acao1`
+    FOREIGN KEY (`id_acao` )
+    REFERENCES `bancocaptura`.`cp_acao` (`id_acao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_acao_usuario_cp_classificacao1`
+    FOREIGN KEY (`id_classificacao` )
+    REFERENCES `bancocaptura`.`cp_classificacao` (`id_classificacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_classificacao_usuario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_classificacao_usuario` (
+  `id_classificacao_usuario` INT NOT NULL AUTO_INCREMENT ,
+  `id_usuario` INT NOT NULL ,
+  `id_classificacao` INT NOT NULL ,
+  `mes` INT NULL ,
+  `ano` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id_classificacao_usuario`) ,
+  INDEX `fk_cp_classificacao_usuario_cp_usuario1` (`id_usuario` ASC) ,
+  INDEX `fk_cp_classificacao_usuario_cp_classificacao1` (`id_classificacao` ASC) ,
+  CONSTRAINT `fk_cp_classificacao_usuario_cp_usuario1`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `bancocaptura`.`cp_usuario` (`id_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_classificacao_usuario_cp_classificacao1`
+    FOREIGN KEY (`id_classificacao` )
+    REFERENCES `bancocaptura`.`cp_classificacao` (`id_classificacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_reputacao`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_reputacao` (
+  `id_reputacao` INT NOT NULL AUTO_INCREMENT ,
+  `nome_reputacao` VARCHAR(45) NOT NULL ,
+  `pontos` INT NOT NULL ,
+  `intervalo` INT NOT NULL ,
+  PRIMARY KEY (`id_reputacao`) )
+ENGINE = InnoDB;
+
+INSERT INTO cp_reputacao (nome_reputacao, pontos, intervalo) VALUES
+('iniciante I', 0,1000),
+('iniciante II', 1000,1000),
+('iniciante III', 2000,2000),
+('intermediário I', 4000,2000),
+('intermediário II', 6000,2000),
+('intermediário III', 8000,4000),
+('avançado I', 12000, 4000),
+('avançado II', 16000, 4000),
+('avançado III', 20000, 8000);
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_ponto_permanente`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_ponto_permanente` (
+  `id_ponto_permanente` INT NOT NULL AUTO_INCREMENT ,
+  `id_usuario` INT NOT NULL ,
+  `id_acao` INT NOT NULL ,
+  `id_reputacao` INT NOT NULL ,
+  `soma` INT NOT NULL DEFAULT 0 ,
+  `mes` INT NOT NULL DEFAULT 1 ,
+  `ano` INT NOT NULL DEFAULT 2013 ,
+  PRIMARY KEY (`id_ponto_permanente`) ,
+  INDEX `fk_cp_ponto_permanente_cp_usuario1` (`id_usuario` ASC) ,
+  INDEX `fk_cp_ponto_permanente_cp_acao1` (`id_acao` ASC) ,
+  INDEX `fk_cp_ponto_permanente_cp_reputacao1` (`id_reputacao` ASC) ,
+  CONSTRAINT `fk_cp_ponto_permanente_cp_usuario1`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `bancocaptura`.`cp_usuario` (`id_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_ponto_permanente_cp_acao1`
+    FOREIGN KEY (`id_acao` )
+    REFERENCES `bancocaptura`.`cp_acao` (`id_acao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_ponto_permanente_cp_reputacao1`
+    FOREIGN KEY (`id_reputacao` )
+    REFERENCES `bancocaptura`.`cp_reputacao` (`id_reputacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_reputacao_usuario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_reputacao_usuario` (
+  `id_reputacao_usuario` INT NOT NULL AUTO_INCREMENT ,
+  `id_usuario` INT NOT NULL ,
+  `id_reputacao` INT NOT NULL ,
+  `mes` INT NOT NULL DEFAULT 01 ,
+  `ano` INT NOT NULL DEFAULT 2013 ,
+  PRIMARY KEY (`id_reputacao_usuario`) ,
+  INDEX `fk_cp_reputacao_usuario_cp_usuario1` (`id_usuario` ASC) ,
+  INDEX `fk_cp_reputacao_usuario_cp_reputacao1` (`id_reputacao` ASC) ,
+  CONSTRAINT `fk_cp_reputacao_usuario_cp_usuario1`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `bancocaptura`.`cp_usuario` (`id_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_reputacao_usuario_cp_reputacao1`
+    FOREIGN KEY (`id_reputacao` )
+    REFERENCES `bancocaptura`.`cp_reputacao` (`id_reputacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `bancocaptura`.`cp_ponto_mensal`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `bancocaptura`.`cp_ponto_mensal` (
+  `id_ponto_mensal` INT NOT NULL AUTO_INCREMENT ,
+  `id_usuario` INT NOT NULL ,
+  `id_acao` INT NOT NULL ,
+  `id_classificacao` INT NOT NULL ,
+  `soma` INT NOT NULL DEFAULT 0 ,
+  PRIMARY KEY (`id_ponto_mensal`) ,
+  INDEX `fk_cp_ponto_mensal_cp_usuario1` (`id_usuario` ASC) ,
+  INDEX `fk_cp_ponto_mensal_cp_acao1` (`id_acao` ASC) ,
+  INDEX `fk_cp_ponto_mensal_cp_classificacao1` (`id_classificacao` ASC) ,
+  CONSTRAINT `fk_cp_ponto_mensal_cp_usuario1`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `bancocaptura`.`cp_usuario` (`id_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_ponto_mensal_cp_acao1`
+    FOREIGN KEY (`id_acao` )
+    REFERENCES `bancocaptura`.`cp_acao` (`id_acao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cp_ponto_mensal_cp_classificacao1`
+    FOREIGN KEY (`id_classificacao` )
+    REFERENCES `bancocaptura`.`cp_classificacao` (`id_classificacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+

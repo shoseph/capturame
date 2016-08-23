@@ -1,0 +1,22 @@
+<?php $this->headScript()->prependFile('/js/plugins/ckeditor/ckeditor.js'); ?>
+<h2 class="linha linhaTitulo pointer"><span class="branco">Enviar Dica</span></h2>
+<div class="paragrafos">
+    <?php
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('adicionar-dica'));
+        $form->prepare();
+    ?>
+    <div id="adicionarNovidade" class="paragrafoEditor">
+        <?php echo $this->form()->openTag($form); ?>
+        <div class="paragrafoTitulo verdeClaro"><span class="iconInfo">&nbsp;</span>Enviar uma Dica</div>
+        <dl class="listagemLadoALado">
+            <?php echo $this->camposRequeridos(); ?>
+            <dt><?php echo $this->formLabel($form->get('titulo')); ?></dt>
+            <dd><?php echo $this->formElement($form->get('titulo')); ?><?php echo implode(', ', $form->get('titulo')->getMessages()); ?></dd>
+        </dl>
+        <span class="espacamentoEditor"><?php echo $this->formElement($form->get('conteudo')); ?><?php echo implode(', ', $form->get('conteudo')->getMessages()); ?></span>
+        <span id="submitEnviarNovidade"><?php echo $this->formSubmit($form->get('enviar')); ?></span>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>
+<br class="clear" />

@@ -1,0 +1,28 @@
+<?php $this->tituloHelper()->setTitulo('Editar Capturada'); ?>
+<div class='parteConteudo'>
+    <bloquenote class="editar">
+        <h2 class='titulo'>Editar Capturada</h2>
+        <h2 class='subtitulo'><?php echo $this->capturada->nome; ?></h2>
+    </bloquenote>
+    <article>
+        <?php $form = $this->form; $url = "/editar-capturada/{$this->user->id_usuario}/{$this->capturada->id_capturada}"; $form->setAttribute('action', $url);  $form->setAttribute('enctype', 'multipart/form-data');  $form->prepare(); ?>
+        <?php if($form->getMessages()): ?>
+        <bloquenote>
+            <?php foreach($form->getMessages() as $i => $element): ?>
+                <p><?php echo "Erro: [" . $this->formLabel($form->get($i)) . '] ' .  implode(', ', $form->get($i)->getMessages()); ?></p>
+            <?php endforeach; ?>
+        </bloquenote>
+        <?php endif;?>
+        <?php echo $this->form()->openTag($form); ?>
+        <p><img id="imgEditar" width="350px" src="<?php echo $this->capturada->getImagem(); ?>" /></p>
+        <ul class="ladoalado">
+            <li><?php echo $this->formLabel($form->get('nome')); ?><?php echo $this->formElement($form->get('nome')); ?></li>
+            <li><?php echo $this->formLabel($form->get('descricao')); ?><?php echo $this->formElement($form->get('descricao')); ?></li>
+        </ul>
+        <ul class="listaBotoes">
+            <li><span><a id="editarCapturada"  class="voltar" href="javascript:history.back()">Voltar</a></span></li>
+            <li><?php echo $this->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>  
+</div>

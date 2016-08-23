@@ -1,0 +1,9 @@
+
+
+-- capturando as fotos de um usuário
+
+-- capturando o ultimo indice inserido 
+-- select max(id_capturada) from bancocaptura.cp_usuario_capturada where id_usuario = 1;
+
+select * from bancocaptura.cp_capturada;
+select * from bancocaptura.cp_usuario_capturada where id_usuario = 1 and id_capturada >= 101 limit 2;

@@ -1,0 +1,36 @@
+<?php $this->tituloHelper()->setTitulo('Sugestões'); ?>
+<div class='parteConteudo'>
+    <bloquenote class="sugestao"><h2 class='titulo'>Sugestões</h2></bloquenote>
+    <article>
+        <h3 class="paragrafoTitulo">O que é uma sugestão?</h3>
+        <p>O Captura.me traz um serviço inovador, que pretende revolucionar a forma de se convidar um fotógrafo para capturar um evento.</p>
+        <p>O serviço tem como finalidade indicar eventos, que estarão em pauta e serão discutidos nas reuniões com os usuários do captura.me.</p>
+        <p><b>Observação importante</b>: Para a confirmação da presença de algum membro do captura.me nos eventos, será necessário informar um "e-mail válido".</p>
+        <p>Seja criativo! Sugira um evento! Queremos Captura-lo!</p>
+    </article>  
+</div>
+
+<div class='parteConteudo'>
+    <bloquenote class="captura"><h2 class='titulo'>Enviar uma Sugestão</h2><h2 class='subtitulo'><?php echo $this->camposRequeridos(); ?></h2></bloquenote>
+    <article>
+        <?php $form = $this->form;  $form->setAttribute('action', $this->url('sugestoes')); $form->prepare(); ?>
+        <?php if($form->getMessages()): ?>
+        <bloquenote>
+            <?php foreach($form->getMessages() as $i => $element): ?>
+                <p><?php echo "Erro: [" . $this->formLabel($form->get($i)) . '] ' .  implode(', ', $form->get($i)->getMessages()); ?></p>
+            <?php endforeach; ?>
+        </bloquenote>
+        <?php endif; ?>
+        <?php echo $this->form()->openTag($form); ?>
+        <ul class="ladoalado">
+            <li><?php echo $this->formLabel($form->get('evento')); ?><?php echo $this->formElement($form->get('evento')); ?></li>
+            <li><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formElement($form->get('email')); ?></li>
+            <li><?php echo $this->formLabel($form->get('data')); ?><?php echo $this->formElement($form->get('data')); ?></li>
+            <li><?php echo $this->formLabel($form->get('hora')); ?><?php echo $this->formElement($form->get('hora')); ?></li>
+            <li><?php echo $this->formLabel($form->get('descricao')); ?><?php echo $this->formElement($form->get('descricao')); ?></li>
+            <li><?php echo $this->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>  
+</div>
+    

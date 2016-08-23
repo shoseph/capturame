@@ -1,0 +1,27 @@
+<?php $this->tituloHelper()->setTitulo('Apoie o Captura.Me'); ?>
+
+<div class="parteConteudo">
+    <bloquenote class="menu">
+        <h2 class="titulo">Seja um Apoiador do Captura.Me</h2>
+        <h2 class="subtitulo">Envie seus dados que em seguida entraremos em contato</h2>
+    </bloquenote>
+    
+    <article>
+        <?php $form = $this->form;  $form->setAttribute('action', $this->url('adicionar-apoio')); $form->prepare(); ?>
+        <?php if($form->getMessages()): ?>
+        <bloquenote>
+            <?php foreach($form->getMessages() as $i => $element): ?>
+                <p><?php echo "Erro: [" . $this->formLabel($form->get($i)) . '] ' .  implode(', ', $form->get($i)->getMessages()); ?></p>
+            <?php endforeach; ?>
+        </bloquenote>
+        <?php endif;?>
+        <?php echo $this->form()->openTag($form); ?>
+        <ul class="ladoalado">
+            <li><?php echo $this->formLabel($form->get('empresa')); ?><?php echo $this->formElement($form->get('empresa')); ?></li>
+            <li><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formElement($form->get('email')); ?></li>
+            <li><?php echo $this->formLabel($form->get('apoio')); ?><?php echo $this->formElement($form->get('apoio')); ?></li>
+            <li><?php echo $this->formSubmit($form->get('enviar')); ?></li>
+        </ul>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>  
+</div>

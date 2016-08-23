@@ -1,0 +1,14 @@
+<?php $this->tituloHelper()->setTitulo('Reuniões Captura.Me'); ?>
+<div class="parteConteudo">
+    <bloquenote class="reuniao">
+        <h2 class="titulo">Reuniões Captura.Me</h2>
+        <h2 class="subtitulo">Espaço reservado para os itens referentes as reuniões</h2>
+    </bloquenote>
+    <article>
+    <h3 class="paragrafoTitulo">Atas das reuniões</h3>
+    <p>Para cada reunião do Captura existirá um documento informativo sobre o que aconteceu(ata) onde nesse documento deve conter quais são as deliberações, novas ieias, e os passeios semanais discutidos</p>
+    <ul id="listaAtas"><?php foreach($this->atas as $arquivo => $ata ): ?>
+        <li><a href="<?php echo $this->pasta . $arquivo; ?>"><?php echo $ata; ?></a></li>
+    <?php endforeach; ?></ul>
+   </article>
+</div>

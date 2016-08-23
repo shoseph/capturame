@@ -1,0 +1,173 @@
+<?php
+use User\Entity\ClassConfig;
+use \User\Auth\CapturaAuth;
+echo $this->doctype(); 
+?>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <?php echo $this->headTitle($this->translate('Captura.Me'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <!-- Os css-->
+        <?php echo $this->headLink(array(
+                       'rel' => 'shortcut icon', 
+                       'type' => 'image/vnd.microsoft.icon', 
+                       'href' => $this->basePath() . '/images/favicon.ico'
+                   ))
+                   ->prependStylesheet($this->basePath() . '/css/reset.css')
+                   ->prependStylesheet($this->basePath() . '/css/default_style.css')
+                   ->prependStylesheet($this->basePath() . '/css/editor.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/jquery/jquery.jscrollpane.css')
+                   ->prependStylesheet($this->basePath() . 'js/plugins/lightbox/css/lightbox.css')
+                   
+                   // falta saber quais desses vão embora
+                   ->prependStylesheet($this->basePath() . '/js/plugins/jqueryui/jquery-ui-1.9.2.custom.min.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/cute/css/main.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/cute/css/slider-style.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/multiupload/css/style.css')
+             ;
+        ?>
+        <script type="text/javascript">
+        /*
+            var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-36552941-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+        */
+        </script>
+        <?php $usuarioLogado = CapturaAuth::getInstance()->getUser(); ?>
+	</head>
+	<body>
+	    <!-- Verificar como eu vou fazer com as curtidas e as mensagens -->
+	    <?php //echo $this->curtirHelper($this->url); ?>
+        <div id="mensagens">
+            <div id="mensagensCentralizadas">
+            <?php $msgs = $this->hasMessages ? $this->msg : $this->flashMessenger()->getMessages(); if ($this->hasMessages || $this->flashMessenger()->hasMessages()): foreach($msgs as $msg): ?>
+                <div class="<?php echo $msg->status ? 'msgSucesso' : 'msgFalha'; ?>"><?php echo $msg->msg; ?></div>
+                <br class="clear" />
+            <?php endforeach;  endif; ?>
+            </div>
+        </div>
+            
+            
+        <header align="center">
+            <ul id="links">
+                <?php if(!$usuarioLogado) { ?>   
+                <li id="linkEntrar"><a href='/login' title="Como entrar no Captura.Me" >Entrar</a></li>
+                <?php }else{ ?>
+                <li id="linkUsuarioLogado"><a title="Ir para perfil" href="/user-index/<?php echo CapturaAuth::getInstance()->getUser()->id_usuario; ?>"><?php echo ucfirst(CapturaAuth::getInstance()->getUser()->nome); ?></a>&nbsp;<a title="Deslogar do Captura.Me" href="/logout">(Sair)</a></li>
+                <?php } ?>                    
+                <li id="linkInfo" ><a title="Informações sobre o Captura.Me" href='/info' >O que é</a></li>
+                <li id="linkBatalhas"><a title="Fotos para votação do público" href='/batalhas' >Batalhas</a></li>
+                <?php if($usuarioLogado) { ?>   
+                    <li id="linkReunioes"><a href='/reunioes' >Reuniões</a></li>
+                <?php } else { ?>
+                    <li id="linkReunioes" title="Necessita Logar no Captura.Me">Reuniões</li>
+                <?php }?>                        
+                <li id="linkVideos"><a href='/videos'  title="Vídeos do Captura.Me">Videos</a></li>
+                <li id="linkTags"><a href='/tags'  title="Imagens classificadas no Captura.Me">Tags</a></li>
+                <li id="linkEventos"><a href='/eventos'  title="Eventos capturados por nossos capturadores">Eventos Capturados</a></li>
+                <li id="linkCaptureSeuEvento"><a href='/sugestoes'  title="Sugira onde o Captura.Me deve aparecer!">Capture seu evento</a></li>
+                <li id="linkRanking"><a href='/capturadores'  title="Lista com os melhores Capturadores">Ranking</a></li>
+                <li id="linkCalendario"><a  title="Eventos do calendário Captura.Me" href='/calendario' >Calendario</a></li>
+                <li id="linkNovidades"><a href='/novidades' title="Novidades no Captura.Me" >Novidades</a></li>
+                <li id="linkRevista"><a href='/revistas' title="Revistas do Captura.Me" >Revistas</a></li>
+                <li><a id="linkCapturaMe" href='/' >&nbsp;</a></li>
+                <?php if($usuarioLogado) { ?>   
+                    <li><a id="linkPerfil" title="Perfil no Captura.Me" href="/user-index/<?php echo CapturaAuth::getInstance()->getUser()->id_usuario; ?>" ></a></li>
+                <?php } ?>
+            </ul>
+        </header>
+        <article>
+            <div id="conteudo">
+                <div class="escondido">Creative Commons <b>CC BY-ND</b>: <br>Possível utilização da imagem caso informe <b>quem é autor</b> e <b>não altere a imagem</b>.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <?php echo $this->content; ?>
+            </div>
+        </article>
+        <br class="clear"/>
+        <div id="backgroundMensagens">&nbsp;</div>
+        <div id="subArticle">
+                <nav id="menuMensagens">
+                    <span class="iconBoneco">&nbsp;</span><span class="titulo"><span class="cinza negrito">Rafael Mendes</span> <span class="texto negrito">Porque uma foto não é para ser tirada, ela tem que ser capturada...</span></span>
+                    <br />
+                    <span class="iconTwitter">&nbsp;</span><div class="conteudoTwitters"></div>
+                </nav>
+                <?php echo $this->noticiasHelper(); ?>
+                <h2 class="iconApoio verde">Apoio</h2>
+                <div id="apoio">
+                    <ul>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                        <li><a class="linkNovoApoio" href='/adicionar-apoio' ><img src="/images/divulgue.png" />&nbsp;</a></li>
+                    </ul>
+                </div>
+                <br class="clear">
+                <div class="novoApoio">
+                    <a class="iconNovoApoio" href="/adicionar-apoio"><h2 id="apoioNovo" class="laranjaHover">Novo Apoio</h2></a>
+                </div>
+            
+        </div>
+        <br class="clear">
+        <footer>
+            <div id="conteudoFooter">
+                <div class="paragrafos">
+                    <div class="paragrafoCentral">
+                        <span class="blocoTituloFooter">Links rápidos</span>
+                        <?php if($usuarioLogado) { ?>
+                            <a class="cinza brancoHover" href='/adicionar-capturada' >Envie uma Capturada!</a>
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/batalhas' >Batalhe!</a>
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/reunioes' >Reuniões</a>
+                        <?php } else { ?>
+                            <a class="cinza brancoHover" href='/login' >Envie uma Capturada!</a>  
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/login' >Batalhe!</a>
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/login' >Reuniões</a>
+                        <?php } ?>
+                        <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/videos' >Videos</a>
+                        <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/capturadores' >Ranking</a>
+                        <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/calendario' >Calendario</a>
+                        <?php if($usuarioLogado) { ?>   
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a class="cinza brancoHover" href='/perfil' >Suas informações</a>
+                            <span class="divisaoVerticalFooter">&nbsp;</span> <a id="botaoLogout" class="cinza brancoHover" href="/logout">Sair</a>
+                        <?php } ?>
+                        <span style="left: 670px; position: absolute;">
+                            <a id="redeFacebookAlt" href="http://facebook.captura.me">&nbsp;</a>
+                            <a id="redeGoogleAlt" href="http://google.captura.me">&nbsp;</a>
+                            <a id="redeTwitterAlt" href="http://twitter.captura.me">&nbsp;</a>
+                            <a id="redeYouTubeAlt" href="http://youtube.captura.me">&nbsp;</a>
+                            <a id="redeMyspaceAlt" href="http://myspace.captura.me">&nbsp;</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <?php  
+               $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                          ->prependFile($this->basePath() . '/js/index.js')
+                          ->prependFile($this->basePath() . '/js/jquery.fileDownload.js')
+                        //->prependFile($this->basePath() . '/js/plugins/jquery-notify/src/jquery.notify.min.js')
+                          ->prependFile($this->basePath() . '/js/plugins/multiupload/js/multiupload.js')
+                          ->prependFile($this->basePath() . '/js/plugins/tweet/jquery.tweet.js')
+                          ->prependFile($this->basePath() . '/js/plugins/mask/jquery.maskedinput-1.3.min.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jqueryui/jquery-ui-custom.min.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jquery.js')
+              ;
+              
+              if($this->class && is_dir(constant('JS') . $this->class->getJsPath())){
+                  $jsAction = $this->basePath('/js/') . $this->class->getJsPath() . "{$this->layout()->action}.js";
+                  $this->headScript()->appendFile($jsAction, 'text/javascript');
+              }
+              echo $this->headScript();
+               
+         ?>
+	</body>
+</html>

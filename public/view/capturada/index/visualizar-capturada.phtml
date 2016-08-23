@@ -1,0 +1,43 @@
+<?php use User\Auth\CapturaAuth; ?>
+
+<?php $this->tituloHelper()->setTitulo($this->capturada->capturada->nome); ?>
+<div class='parteConteudo visualizarCapturada'>
+    <bloquenote class="menu visualizarCapturada">
+        <h2 class='titulo'><?php echo $this->capturada->capturada->nome ?></h2>
+        <h2 class='subtitulo'><a href="/visualizar-capturadas/<?php echo $this->user->id_usuario; ?>/1">Visualizar Album</a></h2>
+    </bloquenote>
+    <article class="visualizarCapturada">
+        <h3 class="paragrafoTitulo"></h3>
+        <!-- 
+        <p><a id="pegou">Pegou</a> <span class="quantidadePegou"><?php //echo $this->capturada->capturada->pegou ? $this->capturada->capturada->pegou : 0; ?></span></p>
+        <p><a id="naoPegou">Não Pegou</a> <span class="quantidadeNaoPegou"><?php //echo $this->capturada->capturada->pegou ? $this->capturada->capturada->naoPegou : 0; ?></span></p>
+         -->
+        <?php if(CapturaAuth::getUser() && $this->user->id_usuario == CapturaAuth::getUser()->id_usuario){ ?>
+            <input type="hidden" id="user" value="<?php echo CapturaAuth::getUser()->id_usuario; ?>" />
+            <input type="hidden" id="capturada" value="<?php echo $this->capturada->capturada->id_capturada; ?>" />
+<!--             <span class="iconEstrela">&nbsp;</span><span><a id="editarCapturada" class="azul pointer">Editar</a></span> -->
+        <?php } ?>
+        <div align="center" class="foto">
+            <?php if($this->voltar): ?> <a id="setaEsq" class="divisaoEsquerda" href="/visualizar-capturada/<?php echo $this->voltar; ?>"></a> <?php endif; ?>
+            <?php if($this->avancar): ?> <a id="setaDir" class="divisaoDireita" href="/visualizar-capturada/<?php echo $this->avancar; ?>"></a> <?php endif; ?>
+            <img src="<?php echo $this->capturada->capturada->getImagem(); ?>" />
+            <input type="hidden" value="<?php echo $this->capturada->capturada->getPath(); ?>" id="caminho" />
+            <input type="hidden" value="<?php echo $this->capturada->capturada->id_capturada; ?>" id="capturada" />
+            <input type="hidden" value="<?php echo $this->capturada->capturada->user; ?>" id="usuario" />
+        </div>
+        <?php if($this->capturada->capturada->getDescricao()): ?>
+            <p><?php echo $this->capturada->capturada->getDescricao(); ?></p>
+        <?php endif; ?>
+    </article>
+</div>
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=487250587978311";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>    
+    
+<div id="facebook-comments" class="fb-comments" data-href="<?php echo $this->url ?>" data-width="754" data-num-posts="4"></div>   

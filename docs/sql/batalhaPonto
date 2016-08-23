@@ -1,0 +1,29 @@
+
+-- retornando a quantidade de votos positivos de uma imagem em uma batalha
+/**/ 
+   select count(pegou) as "total"
+     from cp_batalha ba
+     join cp_batalha_capturada bc
+       on ba.id_batalha = bc.id_batalha
+     join cp_batalha_ponto bp
+       on bp.id_batalha_capturada = bc.id_batalha_capturada
+    where bp.id_batalha_capturada = 9
+      and pegou = 1;
+
+/**/
+
+-- retornando a quantidade de não pegou de uma imagem de uma batalha
+/* */
+    select count(naoPegou) as "total"
+     from cp_batalha ba
+     join cp_batalha_capturada bc
+       on ba.id_batalha = bc.id_batalha
+     join cp_batalha_ponto bp
+       on bp.id_batalha_capturada = bc.id_batalha_capturada
+    where bp.id_batalha_capturada = 9
+      and naoPegou = 1;
+
+/**/
+
+-- select * from bancocaptura.cp_batalha_ponto as bp;
+-- select * from bancocaptura.cp_usuario

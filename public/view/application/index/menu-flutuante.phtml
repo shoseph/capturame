@@ -1,0 +1,49 @@
+<?php
+    use User\Auth\CapturaAuth;
+    $this->view->headScript()->prependFile('/js/plugins/captura/menuFlutuante.js'); 
+?>
+        
+<ul>
+    <li class="cabecalho"><h1>Favoritos</h1></li>
+    <li class="hover"><span class="iconNovidade">&nbsp;</span><h1><a href="/" >Novidades</a></h1></li>
+    <li class="hover"><span class="iconDicas">&nbsp;</span><h1><a href="/dicas" >Dicas</a></h1></li>
+    <?php if(CapturaAuth::getInstance()->getUser()): ?>
+    <li class="hover"><span class="iconEnviar">&nbsp;</span><h1><a id="abreEnviarFotos" class="pointer" >Enviar fotos</a></h1></li>
+    <?php endif; ?>
+    
+    <?php if($user = CapturaAuth::getInstance()->getUser()){?>
+        <?php if(!$user->getBatalhando()){?>
+            <li class="hover"><span class="iconBatalha">&nbsp;</span><h1><a href="/batalhe" class="pointer" >Batalhar</a></h1></li>
+        <?php } else { ?>
+            <li class="hover"><span class="iconBatalha">&nbsp;</span><h1><a href="/nao-batalhe" class="pointer" >Desligar modo batalha</a></h1></li>
+        <?php }?>
+    <?php }?>
+    <li class="hover"><span class="iconNovasFotos">&nbsp;</span><h1><a href="/novas-capturadas/1" >Novas fotos</a></h1></li>
+    
+    <li class="espacamento">&nbsp;</li>
+    <li class="cabecalho"><h1>Comunidade</h1></li>
+    <li class="hover"><span class="iconCaptureSeuEvento">&nbsp;</span><h1><a href="/sugestoes" >Capture seu Evento</a></h1></li>
+    <li class="hover"><span class="iconEventos">&nbsp;</span><h1><a href="/eventos" >Eventos Capturados</a></h1></li>
+    
+    <li class="espacamento">&nbsp;</li>
+    <li class="cabecalho"><h1>Listas</h1></li>
+    <li class="hover"><span class="iconBatalhas">&nbsp;</span><h1><a href="/batalhas" >Batalhas</a></h1></li>
+    
+    <?php if(false): ?>
+        <li class="hover"><span class="iconNovosUsuarios">&nbsp;</span><h1><a href="#" >Novos Usuários</a></h1></li>
+    <?php endif; ?>
+    <li class="hover"><span class="iconReputacao">&nbsp;</span><h1><a href="/capturadores" >Reputação</a></h1></li>
+    <li class="hover"><span class="iconMaisCurtidas">&nbsp;</span><h1><a href="/mais-curtidas/1" >Mais Curtidas</a></h1></li>
+    
+    <li class="espacamento">&nbsp;</li>
+    <li class="cabecalho"><h1>Grupo</h1></li>
+    <li class="hover"><span class="iconRevista">&nbsp;</span><h1><a href="/revistas" >Revista</a></h1></li>
+    <li class="hover"><span class="iconVideos">&nbsp;</span><h1><a href="/videos" >Videos</a></h1></li>
+    <li class="hover"><span class="iconReunioes">&nbsp;</span><h1><a href="/reunioes" >Reuniões</a></h1></li>
+    <li class="hover"><span class="iconCalendario">&nbsp;</span><h1><a href="/calendario" >Calendário</a></h1></li>
+    
+    <li class="espacamento">&nbsp;</li>
+    <li class="cabecalho"><h1>Ajuda</h1></li>
+    <li class="hover"><span class="iconQuemSomos">&nbsp;</span><h1><a href="/quem-somos" >Quem Somos</a></h1></li>
+    <li class="hover"><span class="iconDuvidas">&nbsp;</span><h1><a href="/info" >Duvidas?</a></h1></li>
+</ul>

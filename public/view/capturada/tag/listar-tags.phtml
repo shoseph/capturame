@@ -1,0 +1,20 @@
+<h2 class="linha linhaTitulo"><span class="branco">Tags</span></h2>
+<br />
+<h2 class="linhaTitulo"><span class="verdeClaro">Capturadas Catalogadas</span></h2>
+<br />
+<?php echo $this->paginadorHelper("/tags/", $this->totalPaginas, $this->pagina); ?>
+<br class="clear" />
+<div id="etiquetasExistentes" class="bloco blocoCentro">
+    <?php if($this->tags):?>
+    <div align="center" class="etiquetas">
+        <ul class="box">
+        <?php foreach($this->tags as $tag): ?>
+            <li class="natural">
+                <a class="small titulo" href="/tag/<?php echo $tag->nome; ?>/1" ><?php echo $tag->nome; ?></a>
+                <a class="numeroTag" href="/tag/<?php echo $tag->nome; ?>" ><?php echo $tag->quantidade; ?></a>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php endif; ?>
+</div>

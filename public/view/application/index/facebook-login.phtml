@@ -1,0 +1,16 @@
+<?php $this->view->headScript()->prependFile('/js/application/index/facebook-login.js');  ?> 
+
+<?php if (!$this->me){ ?>
+<ul class="menuAcessoUsuario">
+    <li class="itensCentralizados" title="Entrar no Captura.Me utilizando sua conta de facebook">
+        <a id="facebook-login-btn" href="<?php echo $this->loginUrl; ?>"><img src="images/captura2/facebook.jpg" /></a>
+        <input id="publicar-facebook" type="checkbox" checked="checked"><label for="publicar-facebook">Publicar</label>
+    </li>
+    
+</ul>
+<span class="linhaMenuLateral"></span>
+<?php } elseif(!$this->vinculado) { ?>
+<ul class="menuAcessoUsuario">
+    <li class="itensCentralizados">Usuário não vinculado</li>
+</ul>    
+<?php }?>

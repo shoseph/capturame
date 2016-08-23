@@ -1,0 +1,176 @@
+<?php
+use User\Entity\ClassConfig;
+use \User\Auth\CapturaAuth;
+echo $this->doctype(); 
+?>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <?php echo $this->headTitle($this->translate('Captura.Me: fotos, criatividade e compartilhamento de ideias!'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <!-- Os css-->
+        <?php echo $this->headLink(array(
+                       'rel' => 'shortcut icon', 
+                       'type' => 'image/vnd.microsoft.icon', 
+                       'href' => $this->basePath() . '/images/favicon.ico'
+                   ))
+                   ->prependStylesheet($this->basePath() . '/css/reset.css')
+                   ->prependStylesheet($this->basePath() . '/css/default_style.css')
+                   ->prependStylesheet($this->basePath() . '/css/editor.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/jquery/jquery.jscrollpane.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/lightbox/css/lightbox.css')
+                   
+                   // falta saber quais desses vão embora
+                   ->prependStylesheet($this->basePath() . '/js/plugins/jqueryui/jquery-ui-1.9.2.custom.min.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/cute/css/main.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/cute/css/slider-style.css')
+                   ->prependStylesheet($this->basePath() . '/js/plugins/multiupload/css/style.css')
+             ;
+             $usuarioLogado = CapturaAuth::getInstance()->getUser();
+        ?>
+        
+        <?php echo $this->loadCapturadaHelper(); ?>
+        
+        <!-- Google Adsense -->
+        <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-36552941-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+                var linkAnterior = null;
+                var linkProxima = null;
+
+                // FIXME: bug do facebook, verificar no final do ano se o bug foi corrigido
+                if (window.location.hash == '#_=_') {
+                    window.location.hash = ''; // for older browsers, leaves a # behind
+                    history.pushState('', document.title, window.location.pathname); // nice and clean
+                    e.preventDefault(); // no page reload
+                }
+        </script>
+	</head>
+	<body>
+	    <figure id="capturadaEscondida" class="escondido"><?php echo $this->capturadaEscondidaHelper()->html(); ?></figure>
+          <header align="center">
+            <nav>
+                <div class="backgroundAzul"><a id="botaoCapturaHeader" title="Clique para abrir o menu">C</a></div>
+                <?php echo $this->tituloHelper()->html(); ?>
+                
+                <div id="buscaCaptura" title="Pesquisar evento ou tag">
+                    <span id="iconLupa">&nbsp;</span><input class="busca" name="busca" /><input type="hidden" id="valorBusca" />
+                 </div>
+                <?php echo $this->menuPrincipalHelper(); ?>
+                  
+            </nav>
+        </header>
+        
+        <section id="corpo">
+            <section id="esquerda">
+                <aside>&nbsp;
+                    <div id="menuFlutuante">
+                        <?php echo $this->menuFlutuanteHelper(); ?>
+                    </div>
+                </aside>
+                <section id="painel">
+                    <nav class='lateral'>
+                        <?php echo $this->destaqueHelper(); ?>
+                        <span id="separadorListaCapturadas">&nbsp;</span>
+                        <a id="empilharFoto" href="#" ></a>
+                    </nav>
+                        <div id="divisaoEsquerda">
+                            <?php if(!preg_match('/\/visualizar-capturada\//', $this->uri)): ?>
+                            <aside>
+                                <a id="logoHome" href="/" title="Página inicial">&nbsp;</a>
+                                <?php echo $this->loginHelper($usuarioLogado, $this->form()); ?>
+                                <p id="separador">&nbsp;</p>
+                                <ul id="menuAcoesAnuncio">
+                                    <li>Anuncios</li>
+                                    <li><span class="separadorPequeno">&nbsp;</span></li>
+                                    <li><a id="adicionarAnuncio" href="/adicionar-apoio">+ Adicionar</a></li>
+                                    <li><span id="separadorMenuAnuncio" class="filtroTag"> </span></li>
+                                </ul>
+                                <span id="infoAnuncio">
+                                    <a href="http://www.adufpb.org.br"><img src="/images/apoio/adufpb.gif" /></a>
+                                </span>
+                                <span class="linhaMenuLateral"></span>
+                                <span id="googleadsensetab">
+                                    <ins class="adsbygoogle" style="display:inline-block;width:120px;height:90px" data-ad-client="ca-pub-0866031457873969" data-ad-slot="7351264825"></ins>
+                                </span>
+                                <span class="linhaMenuLateral"></span>
+                                
+                            </aside>
+                            <?php endif; ?>
+                            <section id="conteudo">
+                                <article><div class="escondido">Creative Commons <b>CC BY-ND</b>: <br>Possível utilização da imagem caso informe <b>quem é autor</b> e <b>não altere a imagem</b>.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></article>
+                                <div id="blocoMenuRapido">
+                                    <?php if($usuarioLogado) { echo $this->menuRapidoHelper($usuarioLogado); } ?>
+                                </div>
+                                <div id="blocoConteudo" <?php echo $usuarioLogado ? '' : 'class="usuarioDeslogado"'; ?>>
+                                   <?php echo $this->content; ?>
+                                   <p class="bugfixespacamento">&nbsp;</p>
+                                </div>
+                            </section>
+                            <p class="bugfixespacamento">&nbsp;</p>
+                        </div>
+                </section>
+                
+            </section>
+            
+            <aside id="direita">
+                <?php echo $this->msgHelper(); ?>
+                <nav>
+                    <?php echo $this->buscaHelper(); ?>
+                </nav>
+            </aside>
+            
+        </section> 
+        <?php echo $this->msgSobrepostaHelper(); ?>
+            
+        
+        <?php  
+               $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                          ->prependFile($this->basePath() . '/js/index.js')
+                          
+                          // Testar para ver quem vai sair agora
+                          ->prependFile($this->basePath() . '/js/jquery.fileDownload.js')
+                          ->prependFile($this->basePath() . '/js/plugins/multiupload/js/multiupload.js')
+//                           ->prependFile($this->basePath() . '/js/plugins/tweet/jquery.tweet.js')
+                          ->prependFile($this->basePath() . '/js/plugins/mask/jquery.maskedinput-1.3.min.js')
+                          
+                          
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jquery.elastic.source.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jquery.jscrollpane.min.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/mwheelIntent.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jquery-mousewheel.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jqueryui/jquery-ui-custom.min.js')
+//                           ->prependFile($this->basePath() . '/js/plugins/jquery/jquery-ui.js') //testar para saber qual dos dois vai ficar
+                          
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jscrollpane.captura.js')
+                          ->prependFile($this->basePath() . '/js/plugins/captura/resolucao.js')
+                          ->prependFile($this->basePath() . '/js/plugins/lightbox/lightbox.destaque.js')
+                          ->prependFile($this->basePath() . '/js/plugins/lightbox/lightbox.js')
+//                           ->prependFile($this->basePath() . '/js/plugins/jquery/jquery-migrate-1.2.1.min.js')
+                          ->prependFile($this->basePath() . '/js/plugins/jquery/jquery.js')
+              ;
+              
+              if($this->class && is_dir(constant('JS') . $this->class->getJsPath())){
+                  $jsAction = $this->basePath('/js/') . $this->class->getJsPath() . "{$this->layout()->action}.js";
+                  $this->headScript()->appendFile($jsAction, 'text/javascript');
+              }
+              
+              echo $this->headScript();
+               
+         ?>
+         <div id="dialog" class="escondido">&nbsp;</div>
+         <div id='capturalightbox'></div>
+         <div id='destaquelightbox'></div>
+         <div id="fb-root"></div>
+	</body>
+</html>

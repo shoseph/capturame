@@ -1,0 +1,20 @@
+<?php 
+    use User\Auth\CapturaAuth;
+
+$this->headScript()->prependFile('/js/capturada/tag/tags.js'); 
+    $usuarioLogado = CapturaAuth::getInstance()->getUser();
+?>
+<div align="center">
+    <div class="tags">
+        <?php if($this->tags):?>
+            <input type="hidden" value="<?php echo $this->capturada; ?>" id="capt" />
+            <span class="iconTag">&nbsp;</span>
+            <?php foreach($this->tags as $tag): ?>
+                <span><a href="/tag/<?php echo $tag->nome; ?>/1" class="linkTag negrito roxo"><?php echo $tag->nome; ?></a>
+                    <?php if($usuarioLogado && $this->usuario == $usuarioLogado->id_usuario): ?>   
+                    <span id="<?php echo $tag->getId(); ?>" class="iconRemover removeTag"></span>
+                    <?php endif; ?>
+                </span>
+        <?php endforeach; endif;?>
+    </div>
+</div>

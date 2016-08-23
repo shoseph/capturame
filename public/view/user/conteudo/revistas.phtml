@@ -1,0 +1,37 @@
+<?php use User\Controller\Plugin\UserAuthentication; use \User\Auth\CapturaAuth; ?>
+<?php $this->tituloHelper()->setTitulo('Revista'); ?>
+<?php if(CapturaAuth::getUser() && CapturaAuth::getUser()->tipo == 'root'): ?>
+<div class='parteConteudo'>
+    <bloquenote class="menu">
+        <h2 class='titulo'>Menu Revistas</h2>
+        <h2 class='subtitulo'>Ações das revistas</h2>
+    </bloquenote>
+    <article>
+        <ul class="ladoalado">
+            <li><a href="/adicionar-revista">Adicionar revista</a></li>
+        </ul>
+    </article>
+</div>
+<?php endif; ?>
+
+<?php if($this->revistas): foreach($this->revistas as $revista): ?>
+<div class='parteConteudo'>
+    <bloquenote class="revista">
+        <h2 class='titulo'><?php echo $revista->titulo; ?></h2>
+        <h2 class='subtitulo'>
+            <?php if(CapturaAuth::getInstance()->getUser() && CapturaAuth::getInstance()->getUser()->id_usuario == $revista->id_usuario): ?>
+                <a title="Deletar esta dica" href="/deletar-conteudo/<?php echo $revista->id_usuario?>/<?php echo $revista->id_conteudo?>" class="deletarConteudo">deletar</a>
+            <?php endif; ?>
+        </h2>
+    </bloquenote>
+    <article>
+    <p><?php echo $revista->conteudo; ?></p>
+    <?php if($revista->link): ?>
+        <span class="download">
+            <a href="<?php echo "{$revista->link}"; ?>" ><label class="negrito pointer">Download:</label>&nbsp;&nbsp;&nbsp;&nbsp;<label class="pointer"> <?php echo $revista->titulo; ?></label></a>
+        </span>
+    <?php endif; ?>
+    </article>
+</div>
+
+<?php endforeach; endif;?>

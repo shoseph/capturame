@@ -1,0 +1,31 @@
+<div class="wrapper" >
+	<div id="slider_wrapper">
+		<div id="slider" class="cute-slider" data-width="717" data-height="403" data-force="">
+			<ul data-type="slides">
+			<?php foreach($this->fotos as $indice => $foto): ?>
+                    <?php $src = $indice == 0 ? " src='{$foto->getImagem()}' data-thumb='{$foto->getThumb()}' " 
+                                              : " src='{$this->branco}' data-src='{$foto->getImagem()}' data-thumb='{$foto->getThumb()}' "; ?>
+                    <li data-delay='4' data-trans3d='tr2,tr18,tr43' data-trans2d='tr24,tr7,tr18'>
+                        <a href="/visualizar-capturada/<?php echo $foto->user; ?>/<?php echo $foto->id_capturada; ?>">
+                            <img <?php echo $src; ?> />
+                        </a>
+                        <ul data-type="captions">
+							<li class="caption1" data-effect="fade">
+								lorem ipsum dolor
+							</li>
+						</ul>
+                    </li>
+            <?php endforeach; ?>
+			</ul>
+			<ul data-type="controls">			
+				<li data-type="captions"> </li>
+				<li data-type="slideinfo" data-effect="fade"> </li>
+				<li data-type="circletimer" data-color="#333333" data-stroke="13"> </li>
+				<li data-type="next"> </li>
+				<li data-type="previous"> </li>
+				<li data-type="thumblist" data-dir="vertical" data-autohide="true"> </li>				
+			</ul>
+			<!--<div class="br-shadow"> </div>-->
+		</div>
+	</div>
+</div>

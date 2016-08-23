@@ -1,0 +1,8 @@
+<?php $this->headScript()->prependFile('/js/capturada/tag/adicionar-tag.js'); ?>
+<span class="iconMais">&nbsp;</span><span><a id="adicionarTag" class="vermelhoClaro pointer">Etiqueta</a></span>
+<div id="addTag" class="escondido" title="Adicionar Etiqueta">
+     <form id="adicionar-tag" enctype="multipart/form-data" name="adicionar-tag" method="post" action="/add-tag/<?php echo $this->usuario; ?>/<?php echo $this->capturada; ?>">
+         Nome: <input id="nomeTag" type="text" value="" name="nome">
+         <input type="hidden" name="idTag" id="idTag" value="" />
+     </form>
+</div>

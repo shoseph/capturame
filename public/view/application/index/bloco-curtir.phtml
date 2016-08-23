@@ -1,0 +1,19 @@
+<?php 
+      $urlLike = $_SERVER['REQUEST_URI']  == '/' ? 'https://www.facebook.com/capturame' : $this->url;
+      $fbUrl = "http://www.facebook.com/plugins/like.php?href={$urlLike}&appId=487250587978311";
+      
+?>
+<script>
+    var fbURL = "<?php echo $fbUrl; ?>"
+</script>
+
+<div class="box-curtir-flutuante" style="">
+    <div id="flbCont"></div>
+</div>
+
+<div class="box-twitter-flutuante" style="">
+    <div id="twitCont">
+        <p>Seguir: <a href="https://twitter.com/mecaptura" class="twitter-follow-button" data-show-count="false" data-lang="pt">&nbsp;</a></p>
+        <p>Curtir: <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $urlLike; ?>" data-via="mecaptura" data-lang="pt">&nbsp;</a></p>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<li id="foto<?php echo $this->numero; ?>" >
+    <figure class="fotosRandomicasCentro">
+        <a href="/visualizar-capturada/<?php echo $this->foto->user; ?>/<?php echo $this->foto->id_capturada; ?>">
+            <img src="<?php echo $this->foto->getThumb(); ?>"/>
+        </a>
+    </figure>
+</li>

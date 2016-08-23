@@ -1,0 +1,28 @@
+<div class="wrapper" id="wrapper">
+    <div id="slider" class="cute-slider" data-width="610" data-height="400" data-force="" data-shuffle="true">
+    
+        <ul data-type="slides">
+        <?php foreach($this->fotos as $key => $foto):
+                  $src = $key == 0 ? "src='{$foto->getImagem()}' data-thumb='{$foto->getThumb()}'" 
+                                   : "src='{$this->branco}' data-src='{$foto->getImagem()}' data-thumb='{$foto->getThumb()}'";
+        ?>
+            <li data-delay='7' data-trans3d='tr06, tr07, tr08, tr10, tr12, tr13, tr24, tr25, tr33, tr34, tr35, tr39, tr45, tr46, tr48, tr49, tr53, tr55' data-trans2d='tr24,tr7,tr18, tr19'>
+              <img <?php echo $src; ?> />
+              <div data-type="info" data-align="bottom" class="info1">
+                  <span>
+                     <?php echo $foto->nome; ?>
+                  </span>
+                  <a class="direita" data-type="link" href="/visualizar-capturada/<?php echo $foto->user; ?>/<?php echo $foto->id_capturada; ?>">Visualizar</a>
+                  <a class="direita download pointer">Download</a>
+                  <input type="hidden" class="user" value="<?php echo $foto->user; ?>"/>
+                  <input type="hidden" class="capturada" value="<?php echo $foto->id_capturada; ?>"/>
+              </div>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+        <ul data-type="controls">			
+            <li data-type="bartimer"> </li>
+            <li data-type="slideinfo"> </li>
+        </ul>
+    </div>
+</div>
